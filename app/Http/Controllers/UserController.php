@@ -13,11 +13,11 @@ session_start();
 class UserController extends Controller
 {
     public function login(){
-        return view('pages.user.login');
+        return view('user.login');
     }
 
     public function register(){
-        return view('pages.user.register');
+        return view('user.register');
     }
 
     public function registerCustomer(Request $request){
@@ -54,8 +54,8 @@ class UserController extends Controller
         if($result){
             Session::put('customer_id',$result->customer_id);
             Session::put('customer_name',$result->customer_name);
-            Session::forget('cart');
-            Session::forget('shipping_id');
+//            Session::forget('cart');
+//            Session::forget('shipping_id');
             return Redirect::to('/');
         }else{
             return Redirect::to('/login')->with('message','Vui lòng kiểm tra thông tin đăng nhập');
