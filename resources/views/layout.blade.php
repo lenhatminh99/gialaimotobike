@@ -9,13 +9,14 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     {{--    font awesome--}}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    <link rel="stylesheet" href="public/frontend/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{asset('/public/frontend/css/font-awesome.min.css')}}">
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
 {{--style nav--}}
-    <link rel="stylesheet" href="public/frontend/css/style.css">
+    <link rel="stylesheet" href="{{asset('/public/frontend/css/style.css')}}">
 {{--    my css--}}
-    <link rel="stylesheet" href="public/frontend/css/main.css">
+{{--    <link rel="stylesheet" href="public/frontend/css/main.css">--}}
+    <link rel="stylesheet" href="{{asset('/public/frontend/css/main.css')}}">
 
 </head>
 <body>
@@ -25,17 +26,17 @@
     <section class="gNav">
         <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
             <div class="container">
-                <a class="navbar-brand" href="#"><img src="public/frontend/images/logo.png" alt=""></a>
+                <a class="navbar-brand" href="/"><img src="{{asset('public/frontend/images/logo.png')}}" alt=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="fa fa-bars"></span> Menu
                 </button>
 
                 <div class="collapse navbar-collapse" id="ftco-nav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active"><a href="#" class="nav-link">Trang chủ</a></li>
+                        <li class="nav-item active"><a href="/" class="nav-link">Trang chủ</a></li>
                         <li class="nav-item"><a href="#contact" class="nav-link">Liên hệ</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Tin tức</a></li>
                         <li class="nav-item"><a href="{{URL::to('/cart')}}" class="nav-link">Giỏ hàng</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Thanh toán</a></li>
                         @if(Session::get('customer_id') == true)
                             <li class="nav-item dropdown">
                                 <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">
@@ -70,7 +71,7 @@
                 <div class="swiper-slide">
                     <div class="slide-image-banner">
                         <div class="image">
-                            <img src="public/frontend/images/slide1.png" alt="">
+                            <img src="{{asset('public/frontend/images/slide1.png')}}" alt="">
                         </div>
                     </div>
                     <div class="content-banner">
@@ -88,7 +89,7 @@
                 <div class="swiper-slide">
                     <div class="slide-image-banner">
                         <div class="image">
-                            <img src="public/frontend/images/slide2.jpg" alt="">
+                            <img src="{{asset('public/frontend/images/slide2.jpg')}}" alt="">
                         </div>
                     </div>
                     <div class="content-banner">
@@ -117,7 +118,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="motobike_img">
-                        <figure><img src="public/frontend/images/carousel4.jpg" alt="#"/></figure>
+                        <figure><img src="{{asset('public/frontend/images/carousel4.jpg')}}" alt="#"/></figure>
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -128,7 +129,7 @@
                             là loại xe có hai bánh theo chiều trước-sau và chuyển động nhờ động cơ gắn trên nó.
                             Xe ổn định khi chuyển động nhờ lực hồi chuyển con quay khi chạy
                         </p>
-                        <a href="{{URL::to('/show-product')}}">Mua Ngay</a>
+                        <a href="{{URL::to('/show-product#scrollToShowProduct')}}">Mua Ngay</a>
                     </div>
                 </div>
             </div>
@@ -151,14 +152,15 @@
                 </div>
                 <div class="col-md-4">
                     <div class="motobike_img">
-                        <figure><img src="public/frontend/images/phukien.png" alt="#"/></figure>
+                        <figure><img src="{{asset('/public/frontend/images/phukien.png')}}" alt="#"/></figure>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
     @yield('content')
+</div>
+
 {{--footer--}}
 <div id="footer">
     <div class="main-block" id="contact">
@@ -177,10 +179,10 @@
 
 <script src="https://kit.fontawesome.com/7172a51dfe.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-<script src="public/frontend/js/jquery.min.js"></script>
-<script src="public/frontend/js/popper.js"></script>
-<script src="public/frontend/js/bootstrap.min.js"></script>
-<script src="public/frontend/js/main.js"></script>
+<script src="{{secure_asset('/public/frontend/js/jquery.min.js')}}"></script>
+<script src="{{secure_asset('/public/frontend/js/popper.js')}}"></script>
+<script src="{{secure_asset('/public/frontend/js/bootstrap.min.js')}}"></script>
+<script src="{{secure_asset('/public/frontend/js/main.js')}}"></script>
 </body>
 </html>
 

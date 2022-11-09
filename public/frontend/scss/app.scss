@@ -1,9 +1,9 @@
 //var
-$color-border: #eee;
-$color-label: #aaa;
-$yellow: #ffe14d;
-$yellow-hover: rgb(229, 209, 120);
-$font-default: 'Roboto', sans-serif;
+    $color-border: #eee;
+    $color-label: #aaa;
+    $yellow: #ffe14d;
+    $yellow-hover: rgb(229, 209, 120);
+    $font-default: 'Roboto', sans-serif;
 
 * {
     box-sizing: border-box !important;
@@ -21,6 +21,7 @@ body {
     font-weight: normal;
 }
 
+//container - chua noi dung gom nav bar && page body
 .container {
     width: 85%;
     margin: 0 auto;
@@ -127,7 +128,7 @@ body {
     margin-top: 5px;
     color: white;
 }
-/*=== banner ===*/
+/*=== banner - carousel - slider su dung swiper ===*/
 .banner{
     .swiper-slide{
         position: relative;
@@ -220,7 +221,7 @@ body {
     height: 600px;
 }
 
-/* Body/Header stuff */
+/*gio hang - shopping cart */
 .shopping-cart {
     padding: 0px 30px 30px 20px;
     font-family: $font-default;
@@ -360,6 +361,7 @@ body {
 }
 
 /** motobike **/
+//choose ontion xe may va phu kien
 .pageBody .motobike:nth-child(2){
     padding-top: 0;
     .titlepage{
@@ -408,4 +410,40 @@ body {
         }
     }
 }
+//show san pham va danh muc khi click vao mua ngay
+.product-form{
+    margin-bottom: 2em;
+    .product-images{
+        position: relative;
+        width: 250px;
+        height: 200px;
+        .product-image{
+            position: absolute;
+            width: 280px;
+            height: 200px;
+            margin: 0 auto;
+            left: 10%;
+            object-fit: cover;
+            padding-bottom: 20px;
+        }
+    }
+    h3{
+        color: #017143;
+        margin-bottom: 0;
+    }
+    .product-name{
+        font-size: 1.5em;
+        color: black;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-bottom: 0;
+    }
 
+.add-to-cart{
+    padding: 10px 20px;
+    background-color: $yellow;
+    &:hover{
+        background-color: $yellow-hover;
+    }
+}
+}

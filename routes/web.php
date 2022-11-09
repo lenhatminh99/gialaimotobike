@@ -20,9 +20,12 @@ use App\Http\Controllers\CommentController;
 |
 */
 //home view
-Route::get('/', function () {
-    return view('layout');
-});
+Route::get('/',[HomeController::class, 'index']);
+//home -> show product
+Route::get('/show-product',[ProductsController::class,'showProduct']);
+//home -> show product by category
+Route::get('/product-by-category/{category_id}', [ProductsController::class, 'show_Product_ByCategory']);
+
 //login - register view
 Route::get('/login',[UserController::class,'login']);
 Route::get('/register',[UserController::class,'register']);
@@ -32,8 +35,6 @@ Route::post('/login-customer',[UserController::class,'loginCustomer']);
 //logout
 Route::get('/logout-customer', [UserController::class,'logoutCustomer']);
 
-//home -> show product
-Route::get('/show-product',[ProductsController::class,'showProduct']);
 //-----------------------------------------------------------------Admin routes-----------------------------------------------------//
 Route::get('/admin', [AdminController::class, 'index']);
 Route::get('/dashboard', [AdminController::class, 'show_dashboard']);

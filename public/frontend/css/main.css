@@ -118,7 +118,7 @@ body {
   color: white;
 }
 
-/*=== banner ===*/
+/*=== banner - carousel - slider su dung swiper ===*/
 .banner .swiper-slide {
   position: relative;
 }
@@ -209,7 +209,7 @@ body {
   height: 600px;
 }
 
-/* Body/Header stuff */
+/*gio hang - shopping cart */
 .shopping-cart {
   padding: 0px 30px 30px 20px;
   font-family: "Roboto", sans-serif;
@@ -391,6 +391,42 @@ body {
 .motobike .motobike_img figure img {
   width: 100%;
   object-fit: cover;
+}
+
+.product-form {
+  margin-bottom: 2em;
+}
+.product-form .product-images {
+  position: relative;
+  width: 250px;
+  height: 200px;
+}
+.product-form .product-images .product-image {
+  position: absolute;
+  width: 280px;
+  height: 200px;
+  margin: 0 auto;
+  left: 10%;
+  object-fit: cover;
+  padding-bottom: 20px;
+}
+.product-form h3 {
+  color: #017143;
+  margin-bottom: 0;
+}
+.product-form .product-name {
+  font-size: 1.5em;
+  color: black;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+.product-form .add-to-cart {
+  padding: 10px 20px;
+  background-color: #ffe14d;
+}
+.product-form .add-to-cart:hover {
+  background-color: rgb(229, 209, 120);
 }
 
 /*# sourceMappingURL=main.css.map */

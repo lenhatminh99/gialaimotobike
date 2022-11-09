@@ -22,9 +22,6 @@ class ProductsController extends Controller
             return Redirect::to('admin')->send();
         }
     }
-    public function showProduct(){
-        return view('product.product');
-    }
     //----------------------------------PRODUCTS-----------------------------------
 
     // return trang Add products
@@ -108,7 +105,6 @@ class ProductsController extends Controller
         DB::table('tbl_products')->where('product_id',$product_id)->update($data);
         return Redirect::to('list-products')->with('message', 'Sửa sản phẩm thành công');
     }
-
     public function delete_Products($product_id){
         $this->Authlogin();
         DB::table('tbl_products')->where('product_id',$product_id)->delete();
@@ -125,15 +121,22 @@ class ProductsController extends Controller
         DB::table('tbl_products')->where('product_id', $products_id)->update(['product_status' => 1]);
         return Redirect('/list-products')->with('message','Cập nhật thành công!');
     }
-
-    //-------------------------------SHOW PRODUCT WHEN CLICK ON CATEGORY-------------------------------
-    public function show_Product($category_id){
+    //-------------------------------SHOW PRODUCT WHEN CLICK ON MUA NGAY-------------------------------
+    public function showProduct(){
+        // $ds_sanpham = Product::all();
+        $ds_sanpham = Product::where('product_status','1')
+            ->orderby('product_id','desc')
+            ->paginate(15);
+        $cate_products = DB::table('tbl_category_products')->where('category_status','1')->orderby('category_id','desc')->get();
+        return view('product.product')->with('category', $cate_products)->with('danhsachsanpham',$ds_sanpham);
+    }
+    //-------------------------------SHOW PRODUCT BY CATEGORY WHEN CLICK ON CATEGORY-------------------------------
+    public function show_Product_ByCategory($category_id){
         $cate_products = DB::table('tbl_category_products')->where('category_status','1')->orderby('category_id','desc')->get();
         $products = DB::table('tbl_category_products')
         ->join('tbl_products','tbl_products.category_id','=','tbl_category_products.category_id')
         ->where('tbl_category_products.category_id',$category_id)->get();
-
-        return view('pages.product.show_product')->with('products', $products)->with('category', $cate_products);
+        return view('product.product_by_category')->with('products', $products)->with('category', $cate_products);
     }
     public function product_Details($product_id){
         $list_products = DB::table('tbl_products')->where('product_status','1')->orderby(DB::raw('RAND()'))->limit(3)->get();

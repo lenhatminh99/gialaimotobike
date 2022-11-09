@@ -1,3 +1,4 @@
+//carousel
 var swiper = new Swiper(".mySwiperBanner", {
     pagination: {
         el: ".swiper-pagination",
@@ -7,3 +8,4 @@ var swiper = new Swiper(".mySwiperBanner", {
     },
     loop: true,
 });
+
