@@ -11,8 +11,7 @@
 //        }
 //    }
     ?>
-    <h3 style="color: white;">Chào mừng bạn đến với admin panel</h3><br />
-    <h3 style="color: white;">Trang quản lý hệ thống shop xe máy Gia Lai</h3>
+    <h3 style="color: white;">QUẢN TRỊ HỆ THỐNG GIA LAI MOTOBIKE</h3>
     <div class="market-updates">
         <div class="col-md-3 market-update-gd">
             <div class="market-update-block clr-block-1">

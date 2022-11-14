@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
 {{--style nav--}}
     <link rel="stylesheet" href="{{asset('/public/frontend/css/style.css')}}">
-{{--    my css--}}
+{{--    sweet alert--}}
+    <link rel="stylesheet" href="{{asset('/public/frontend/css/sweetalert.css')}}">
+    {{--    my css--}}
 {{--    <link rel="stylesheet" href="public/frontend/css/main.css">--}}
     <link rel="stylesheet" href="{{asset('/public/frontend/css/main.css')}}">
 
@@ -35,7 +37,7 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active"><a href="/" class="nav-link">Trang chủ</a></li>
                         <li class="nav-item"><a href="#contact" class="nav-link">Liên hệ</a></li>
-                        <li class="nav-item"><a href="{{URL::to('/cart')}}" class="nav-link">Giỏ hàng</a></li>
+                        <li class="nav-item"><a href="{{URL::to('/gio-hang')}}" class="nav-link">Giỏ hàng</a></li>
                         <li class="nav-item"><a href="#" class="nav-link">Thanh toán</a></li>
                         @if(Session::get('customer_id') == true)
                             <li class="nav-item dropdown">
@@ -141,6 +143,7 @@
 <script src="/public/frontend/js/jquery.min.js"></script>
 <script src="/public/frontend/js/popper.js"></script>
 <script src="/public/frontend/js/bootstrap.min.js"></script>
+<script src="/public/frontend/js/sweetalert.js"></script>
 <script src="/public/frontend/js/main.js"></script>
 </body>
 </html>

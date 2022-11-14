@@ -47,21 +47,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!--header start-->
         <header class="header fixed-top clearfix">
             <!--logo start-->
-            <div class="brand">
-                <a href="#" class="logo">
-                    Quản lý
-                </a>
-                <div class="sidebar-toggle-box">
-                    <div class="fa fa-bars"></div>
-                </div>
-            </div>
+{{--            <div class="brand">--}}
+{{--                <a href="#" class="logo">--}}
+{{--                    Quản lý--}}
+{{--                </a>--}}
+{{--                <div class="sidebar-toggle-box">--}}
+{{--                    <div class="fa fa-bars"></div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
             <div class="top-nav clearfix">
                 <!--search & user info start-->
                 <ul class="nav pull-right top-menu">
-                    <li>
-                        <input type="text" class="form-control search" placeholder=" Search">
-                    </li>
                     <!-- user login dropdown start-->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -152,13 +149,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 @yield('admin_content')
                 @yield('content')
             </section>
-            <!-- footer -->
-            <div class="footer">
-                <div class="wthree-copyright">
-                    <p>© 2022 Công Ty TNHH 1 Thành Viên Minh Lê </a></p>
-                </div>
-            </div>
-            <!-- / footer -->
         </section>
         <!--main content end-->
     </section>

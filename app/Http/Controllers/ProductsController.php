@@ -147,13 +147,12 @@ class ProductsController extends Controller
         return view('product.product_by_category')->with('products', $products)->with('category', $cate_products);
     }
     public function product_Details($product_id){
-        $list_products = DB::table('tbl_products')->where('product_status','1')->orderby(DB::raw('RAND()'))->limit(3)->get();
-        $admin=DB::table('tbl_admin')->get();
+        $list_products = DB::table('tbl_products')->where('product_status','1')->orderby(DB::raw('RAND()'))->limit(4)->get();
         $cate_products = DB::table('tbl_category_products')->where('category_status','1')->orderby('category_id','desc')->get();
         $products = DB::table('tbl_products')
         ->join('tbl_category_products','tbl_category_products.category_id','=','tbl_products.category_id')
         ->where('tbl_products.product_id',$product_id)->get();
-        return view('pages.product.product_details')->with('products', $products)->with('category', $cate_products)->with('admin',$admin)
+        return view('product.product_details')->with('products', $products)->with('category', $cate_products)
         ->with('list_products',$list_products);
     }
 }

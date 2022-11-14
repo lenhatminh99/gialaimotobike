@@ -8,7 +8,6 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +25,7 @@ Route::get('/',[ProductsController::class,'showProduct']);
 //home -> show product by category
 Route::get('/show-product',[ProductsController::class, 'showProductWhenClickBuy']);
 Route::get('/product-by-category/{category_id}', [ProductsController::class, 'show_Product_ByCategory']);
-
+Route::get('/chi-tiet-san-pham/{category_id}', [ProductsController::class, 'product_Details']);
 //login - register view
 Route::get('/login',[UserController::class,'login']);
 Route::get('/register',[UserController::class,'register']);
@@ -35,6 +34,28 @@ Route::post('/register-customer',[UserController::class,'registerCustomer']);
 Route::post('/login-customer',[UserController::class,'loginCustomer']);
 //logout
 Route::get('/logout-customer', [UserController::class,'logoutCustomer']);
+
+//gio hang - cart
+// Route::post('/save-cart', [CartController::class, 'save_Cart']);
+Route::post('/add-cart-ajax', [CartController::class, 'add_Cart_Ajax']);
+Route::get('/gio-hang', [CartController::class, 'gio_Hang']);
+
+Route::post('/update-cart', [CartController::class, 'update_Cart']);
+Route::get('/delete-product-cart/{session_id}', [CartController::class, 'delete_Product_Cart']);
+Route::get('/delete-all-product', [CartController::class, 'delete_All_Product']);
+
+Route::get('/checkout', [CartController::class, 'checkout']);
+Route::post('/save-checkout-customer', [CartController::class, 'save_Checkout_Customer']);
+
+Route::get('/payment', [CartController::class, 'payment']);
+Route::post('/save-payment-customer', [CartController::class, 'save_payment_Customer']);
+
+
+
+
+
+
+
 
 //-----------------------------------------------------------------Admin routes-----------------------------------------------------//
 Route::get('/admin', [AdminController::class, 'index']);

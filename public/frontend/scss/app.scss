@@ -124,9 +124,14 @@ body {
 }
 
 .alert ul li{
-    font-size: 14px;
+    font-size: 1em;
     margin-top: 5px;
     color: white;
+}
+.alert-danger ul li{
+    font-size: 1em;
+    margin-top: 5px;
+    color: black;
 }
 /*=== banner - carousel - slider su dung swiper ===*/
 .banner{
@@ -221,155 +226,9 @@ body {
     height: 600px;
 }
 
-/*gio hang - shopping cart */
-.shopping-cart {
-    padding: 0px 30px 30px 20px;
-    font-family: $font-default;
-    font-weight: 100;
-    margin-top: -45px;
-    h1 {
-        font-weight: 100;
-    }
-
-    label {
-        color: $color-label;
-    }
-    /* Global "table" column settings */
-    .product-image { float: left; width: 20%; }
-    .product-details { float: left; width: 37%; }
-    .product-price { float: left; width: 12%; }
-    .product-quantity { float: left; width: 10%; }
-    .product-removal { float: left; width: 9%; }
-    .product-line-price { float: left; width: 12%; text-align: right; }
-
-
-    /* This is used as the traditional .clearfix class */
-    .group:before,
-    .group:after {
-        content: '';
-        display: table;
-    }
-    .group:after {
-        clear: both;
-    }
-    .group {
-        zoom: 1;
-    }
-
-
-    /* Apply clearfix in a few places */
-    .shopping-cart, .column-labels, .product, .totals-item {
-        @extend .group;
-    }
-
-
-    /* Apply dollar signs */
-    .product .product-price:before, .product .product-line-price:before, .totals-value:before {
-        content: '$';
-    }
-    /* Column headers */
-    .column-labels {
-        label {
-            padding-bottom: 15px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid $color-border;
-        }
-        .product-image, .product-details, .product-removal {
-            text-indent: -9999px;
-        }
-    }
-    /* Product entries */
-    .product {
-        margin-bottom: 20px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid $color-border;
-
-        .product-image {
-            text-align: center;
-            img {
-                width: 100px;
-            }
-        }
-        .product-details {
-            .product-title {
-                margin-right: 20px;
-                font-family: $font-default;
-            }
-            .product-description {
-                margin: 5px 20px 5px 0;
-                line-height: 1.4em;
-            }
-        }
-        .product-quantity {
-            input {
-                width: 40px;
-
-            }
-        }
-        .remove-product {
-            border: 0;
-            padding: 4px 8px;
-            background-color: #c66;
-            color: #fff;
-            font-family: $font-default;
-            font-size: 12px;
-            border-radius: 3px;
-        }
-
-        .remove-product:hover {
-            background-color: #a44;
-        }
-    }
-    /* Totals section */
-    .totals {
-        .totals-item {
-            float: right;
-            clear: both;
-            width: 100%;
-            margin-bottom: 10px;
-
-            label {
-                float: left;
-                clear: both;
-                width: 79%;
-                text-align: right;
-            }
-
-            .totals-value {
-                float: right;
-                width: 21%;
-                text-align: right;
-            }
-        }
-        .totals-item-total {
-            font-family: $font-default;
-        }
-    }
-    .checkout {
-        float: right;
-        border: 0;
-        margin-top: 20px;
-        padding: 6px 25px;
-        background-color: #6b6;
-        color: #fff;
-        font-size: 25px;
-        border-radius: 3px;
-    }
-    .checkout:hover {
-        background-color: #494;
-    }
-}
-
 /** motobike **/
-//choose ontion xe may va phu kien
-.pageBody .motobike:nth-child(2){
-    padding-top: 0;
-    .titlepage{
-        p{
-            text-align: right;
-        }
-    }
-}
+//choose option xe may va phu kien
+
 .motobike {
     background-color: #f6f6f6;
     padding: 90px 0;
@@ -467,3 +326,364 @@ body {
     }
 }
 }
+
+//=== CHI TIET SAN PHAM ===
+.view-product{
+    width: 100%;
+    height: 0;
+    padding-bottom: 30%;
+    position: relative;
+    img{
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+.product-information {
+    border: 1px solid $yellow;
+    background: $yellow;
+    overflow: hidden;
+    padding-bottom: 60px;
+    padding-left: 100px;
+    padding-top: 60px;
+    position: relative;
+    transition: 0.3s ease;
+    clip-path: circle(300px at 100px);
+    &:hover{
+        clip-path: circle(500px at 100px);
+    }
+    h2 {
+        color: #ffffff;
+        font-family: 'Roboto', sans-serif;
+        font-size: 3em;
+        margin-top: 0;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    p {
+        color: #ffffff;
+        font-family: 'Roboto', sans-serif;
+        margin-bottom: 5px;
+        font-size: 1.5em;
+    }
+    span {
+        display: inline-block;
+        margin-bottom: 8px;
+        margin-top: 18px;
+        h3 strong {
+            color: #017143;
+            float: left;
+            font-family: 'Roboto', sans-serif;
+            font-size: 30px;
+            font-weight: 700;
+            margin-right: 20px;
+            margin-top: 0;
+        }
+        input { //none -> cho type hidden, ko nho de lam gi
+            border: 1px solid #DEDEDC;
+            color: #696763;
+            font-family: 'Roboto', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            height: 33px;
+            outline: medium none;
+            text-align: center;
+            width: 50px;
+        }
+    }
+    button{
+        background: black;
+        padding: 5px 20px;
+        color: $yellow;
+        transition: 0.3s ease;
+        &:hover{
+            color: white;
+            padding: 5px 100px 5px 20px;
+        }
+    }
+}
+//danh gia san pham trong chi tiet san pham
+#reviews {
+    margin-bottom: 4em;
+    ul {
+        border: 0 none;
+        list-style: none outside none;
+        margin: 0 0 20px;
+        padding: 0;
+        li {
+            display:inline-block;
+            a {
+                color: #696763;
+                display: block;
+                font-family: 'Roboto', sans-serif;
+                font-size: 1em;
+                padding-right: 1em;
+                i{
+                    color:#FE980F;
+                    padding-right:8px;
+                }
+                &:hover{
+                    background:#fff;
+                    color:#FE980F;
+                }
+            }
+        }
+    }
+    p{
+        color: black;
+    }
+    form span {
+        display: block;
+        input {
+            background:#F0F0E9;
+            border: 0 none;
+            color: #A6A6A1;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            outline: medium none;
+            padding: 8px;
+            width: 48%;
+            &:last-child {
+                margin-left: 3%;
+            }
+        }
+    }
+    textarea {
+        background: #F0F0E9;
+        border: medium none;
+        color: #A6A6A1;
+        height: 195px;
+        margin-bottom: 25px;
+        margin-top: 15px;
+        outline: medium none;
+        padding-left: 10px;
+        padding-top: 15px;
+        resize: none;
+        width: 99.5%;
+    }
+    button {
+        background: #FE980F;
+        border: 0 none;
+        border-radius: 0;
+        color: #FFFFFF;
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+    }
+}
+
+//=== GIO HANG ===
+
+#cart_items {
+    .cart_info {
+        border: 1px solid #E6E4DF;
+        margin-bottom: 50px;
+        .image {
+            padding-left: 30px;
+        }
+        .cart_product {
+            display: block;
+            margin: 15px -70px 10px 25px;
+        }
+        .cart_description{
+            p {
+                color:#696763
+            }
+            h4 {
+                margin-bottom: 0;
+
+                a {
+                    color: #363432;
+                    font-family: 'Roboto', sans-serif;
+                    font-size: 20px;
+                    font-weight: normal;
+                }
+            }
+        }
+        .cart_price {
+            p {
+                color:#696763;
+                font-size: 18px;
+            }
+        }
+        .cart_total_price {
+            color: $yellow;
+            font-size: 24px;
+        }
+        .cart_menu {
+            background: $yellow;
+            color: black;
+            font-size: 16px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: normal;
+        }
+        table tr td {
+            border-top: 0 none;
+            vertical-align: inherit;
+        }
+        .table {
+            .table-condensed {
+                thead {
+                    tr {
+                        height: 51px;
+                        border-bottom: 1px solid #F7F7F0;
+                        &:last-child {
+                            border-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+        .handleTwoBtn td input,
+        .handleTwoBtn td a{
+            background: black;
+            border-radius: 0;
+            color: white;
+            border: none;
+            padding: 5px 20px;
+            transition: 0.2s ease;
+            &:hover{
+                color: $yellow-hover;
+            }
+        }
+    }
+}
+
+.cart_quantity_button a {
+    background:#F0F0E9;
+    color: #696763;
+    display: inline-block;
+    font-size: 16px;
+    height: 28px;
+    overflow: hidden;
+    text-align: center;
+    width: 35px;
+    float: left;
+}
+
+.cart_quantity_input {
+    color: #696763;
+    float: left;
+    font-size: 16px;
+    text-align: center;
+    font-family: 'Roboto',sans-serif;
+
+}
+
+.cart_delete  {
+    display: block;
+    margin-right: -12px;
+    overflow: hidden;
+}
+
+.cart_delete a {
+    background:#ffffff;
+    color: #000000;
+    padding: 5px 7px;
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+.cart_delete a:hover {
+    background: $yellow-hover;
+}
+
+#do_action {
+    .row{
+        justify-content: center;
+    }
+    .total_area {
+        padding-bottom: 18px !important;
+        span {
+            float: right;
+        }
+        ul {
+            list-style: none;
+            li {
+                background:#E6E4DF;
+                color: #696763;
+                margin-top: 10px;
+                padding: 7px 20px;
+            }
+        }
+        .check_out {
+            background: black;
+            border-radius: 0;
+            color: white;
+            border: none;
+            padding: 5px 20px;
+            transition: 0.2s ease;
+            &:hover{
+                color: $yellow;
+                padding: 5px 100px 5px 20px;
+            }
+        }
+    }
+}
+
+
+//=== check out ===
+
+.bill-to p {
+    color: #696763;
+    font-size: 1.5em;
+    font-weight: 300
+}
+
+.form-one {
+    form {
+        text-align: center;
+        input[type="text"] {
+            background:#F0F0E9;
+            border: 0 none;
+            margin-bottom:10px;
+            padding: 10px;
+            width: 100%;
+            font-weight: 300;
+        }
+        input[type="submit"]{
+            background: black;
+            border: 0 none;
+            margin-bottom:10px;
+            padding: 10px;
+            width: 50%;
+            font-weight: 300;
+            transition:  0.3s ease;
+            &:hover{
+                color: $yellow-hover;
+                width: 100%;
+            }
+        }
+        textarea{
+            resize: none;
+            height: 10vh;
+            width: 100%;
+        }
+    }
+}
+
+#cart_items {
+    .cart_info {
+        .table.table-condensed.total-result {
+            margin-bottom: 10px;
+            margin-top: 35px;
+            color: #696763;
+            tr {
+                border-bottom: 0;
+            }
+            span {
+                color: #FE980F;
+                font-weight: 700;
+                font-size: 16px;
+            }
+            .shipping-cost {
+                border-bottom: 1px solid #F7F7F0;
+            }
+        }
+    }
+    .row{
+        justify-content: center;
+    }
+}
+
