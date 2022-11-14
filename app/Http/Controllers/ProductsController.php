@@ -122,7 +122,7 @@ class ProductsController extends Controller
         return Redirect('/list-products')->with('message','Cập nhật thành công!');
     }
     //-------------------------------SHOW PRODUCT WHEN CLICK ON MUA NGAY-------------------------------
-    public function showProduct(){
+    public function showProduct(){ //trang web luc vua truy cap vao
         // $ds_sanpham = Product::all();
         $ds_sanpham = Product::where('product_status','1')
             ->orderby('product_id','desc')
@@ -130,8 +130,16 @@ class ProductsController extends Controller
         $cate_products = DB::table('tbl_category_products')->where('category_status','1')->orderby('category_id','desc')->get();
         return view('product.product')->with('category', $cate_products)->with('danhsachsanpham',$ds_sanpham);
     }
+    public function showProductWhenClickBuy(){ //sau khi thuc hien action click btn mua ngay
+        // $ds_sanpham = Product::all();
+        $ds_sanpham = Product::where('product_status','1')
+            ->orderby('product_id','desc')
+            ->paginate(15);
+        $cate_products = DB::table('tbl_category_products')->where('category_status','1')->orderby('category_id','desc')->get();
+        return view('product.product_buy_action')->with('category', $cate_products)->with('danhsachsanpham',$ds_sanpham);
+    }
     //-------------------------------SHOW PRODUCT BY CATEGORY WHEN CLICK ON CATEGORY-------------------------------
-    public function show_Product_ByCategory($category_id){
+    public function show_Product_ByCategory($category_id){ //sau khi thuc hien nhan vao danh muc sp
         $cate_products = DB::table('tbl_category_products')->where('category_status','1')->orderby('category_id','desc')->get();
         $products = DB::table('tbl_category_products')
         ->join('tbl_products','tbl_products.category_id','=','tbl_category_products.category_id')

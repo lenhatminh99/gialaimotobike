@@ -42,7 +42,7 @@
                     </div>
                     <!-- /.row -->
                     <div class="row">
-                        @foreach($products as $key => $product)
+                        @foreach($danhsachsanpham as $key => $product)
                             <div class="col-md-4 text-center col-sm-6 col-xs-6">
                                 <form class="product-form">
                                     @csrf

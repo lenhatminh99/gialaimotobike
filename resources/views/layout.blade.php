@@ -112,53 +112,12 @@
 
 {{--page body--}}
 <div class="pageBody">
-        {{--    motobike--}}
-    <div class="motobike">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="motobike_img">
-                        <figure><img src="{{asset('public/frontend/images/carousel4.jpg')}}" alt="#"/></figure>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="titlepage">
-                        <h2>XE MÁY</h2>
-                        <p>
-                            Xe máy (còn gọi là mô tô hay xe hai bánh, xe gắn máy, phiên âm từ tiếng Pháp: Motocyclette)
-                            là loại xe có hai bánh theo chiều trước-sau và chuyển động nhờ động cơ gắn trên nó.
-                            Xe ổn định khi chuyển động nhờ lực hồi chuyển con quay khi chạy
-                        </p>
-                        <a href="{{URL::to('/show-product#scrollToShowProduct')}}">Mua Ngay</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{--    motobike-phukien --}}
-    <div class="motobike">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="titlepage">
-                        <h2>PHỤ KIỆN</h2>
-                        <p>
-                            Sở hữu ngay những món phụ kiện cho. ...
-                            Vỏ Bọc Da Yên Xe Máy Chữ Thuê Thái Cho Dream, Wave,
-                            Future, Cub, Sirius, Exciter, Winner, Winner X, Raider, Satria, ...
-                        </p>
-                        <a class="read-more" href="#">Mua Ngay</a>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="motobike_img">
-                        <figure><img src="{{asset('/public/frontend/images/phukien.png')}}" alt="#"/></figure>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     @yield('content')
+{{--    product: show cung website--}}
+{{--    product_buy_action: khi click vao mua ngay thi show ra, hien thi sp kem danh muc--}}
+{{--    product_by_category: nhin la nho--}}
+
 </div>
 
 {{--footer--}}
@@ -179,10 +138,10 @@
 
 <script src="https://kit.fontawesome.com/7172a51dfe.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-<script src="{{secure_asset('/public/frontend/js/jquery.min.js')}}"></script>
-<script src="{{secure_asset('/public/frontend/js/popper.js')}}"></script>
-<script src="{{secure_asset('/public/frontend/js/bootstrap.min.js')}}"></script>
-<script src="{{secure_asset('/public/frontend/js/main.js')}}"></script>
+<script src="/public/frontend/js/jquery.min.js"></script>
+<script src="/public/frontend/js/popper.js"></script>
+<script src="/public/frontend/js/bootstrap.min.js"></script>
+<script src="/public/frontend/js/main.js"></script>
 </body>
 </html>
 

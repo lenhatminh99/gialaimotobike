@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function index(){
         $ds_sanpham = Product::where('product_status','1')
             ->orderby('product_id','desc')
-            ->paginate(6);
+            ->paginate(12);
         $cate_products = DB::table('tbl_category_products')->where('category_status','1')->orderby('category_id','desc')->get();
         return view('layout')->with('category', $cate_products)->with('danhsachsanpham',$ds_sanpham);
         //return ve / khai bao them cho chac

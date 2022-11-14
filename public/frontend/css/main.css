@@ -374,45 +374,67 @@ body {
   line-height: 1.8;
   color: #000;
 }
-.motobike .titlepage a {
+.motobike .titlepage .read-more {
+  float: right;
+}
+.motobike .motobike_img {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 50%;
+  transition: 0.3s all linear;
+}
+.motobike .motobike_img .motobike_img__link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.motobike .motobike_img .motobike_img__link img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.motobike .motobike_img .motobike_img__btn {
+  position: absolute;
+  z-index: 1;
+  top: 85%;
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
   padding: 15px 25px;
   background-color: #ffe14d;
   color: black;
 }
-.motobike .titlepage a:hover {
+.motobike .motobike_img .motobike_img__btn:hover {
   background-color: rgb(229, 209, 120);
-}
-.motobike .titlepage .read-more {
-  float: right;
-}
-.motobike .motobike_img figure {
-  margin: 0;
-}
-.motobike .motobike_img figure img {
-  width: 100%;
-  object-fit: cover;
+  transform: translateY(-10%);
 }
 
 .product-form {
-  margin-bottom: 2em;
+  margin-bottom: 4em;
 }
 .product-form .product-images {
   position: relative;
-  width: 250px;
-  height: 200px;
+  width: 100%;
+  height: 0;
+  padding-bottom: 70%;
 }
 .product-form .product-images .product-image {
   position: absolute;
-  width: 280px;
-  height: 200px;
-  margin: 0 auto;
-  left: 10%;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.product-form .product-images .product-image img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  padding-bottom: 20px;
 }
 .product-form h3 {
   color: #017143;
   margin-bottom: 0;
+  font-size: 1em;
 }
 .product-form .product-name {
   font-size: 1.5em;

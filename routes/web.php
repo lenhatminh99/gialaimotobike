@@ -20,10 +20,11 @@ use App\Http\Controllers\CommentController;
 |
 */
 //home view
-Route::get('/',[HomeController::class, 'index']);
+//Route::get('/',[HomeController::class, 'index']);
 //home -> show product
-Route::get('/show-product',[ProductsController::class,'showProduct']);
+Route::get('/',[ProductsController::class,'showProduct']);
 //home -> show product by category
+Route::get('/show-product',[ProductsController::class, 'showProductWhenClickBuy']);
 Route::get('/product-by-category/{category_id}', [ProductsController::class, 'show_Product_ByCategory']);
 
 //login - register view
