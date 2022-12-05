@@ -7,7 +7,7 @@
                     <li>Chi tiết sản phẩm</li>
                 </ol>
             </div>
-            <div class="row">
+            <div class="row" style="margin-bottom: 4em;">
                 @foreach ($products as $key => $product)
                     <div class="col-md-6 view-product">
                          <img src="{{ URL::to('public/upload/product/' . $product->product_image) }}" alt="" />
@@ -49,22 +49,27 @@
                 @endforeach
             </div>
             <div class="col-sm-12" id="reviews">
-                <ul>
-                    <li><a href=""><i class="fa fa-user"></i>123</a></li>
-                    <li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
-                    <li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2022</a></li>
-                </ul>
-                <p>Mọi bình luận sai phạm sẽ bị khóa tài khoản!</p>
+                <form>
+                    @csrf
+                    <input type="hidden" name="comment_product_id" class="comment_product_id" value="{{$product->product_id}}" />
+                    <div id="comment_show"></div>
+                </form>
                 <p><b>Viết bình luận</b></p>
-                <form action="#">
+                <form action="{{URL::to('/send-comment')}}" method="post">
                     @csrf
                     <span>
-                        <input type="text" name="customer_name" placeholder="Họ tên" />
-                        <input type="email" name="customer_email" placeholder="Địa chỉ email" />
+                        <input type="text" name="comment_name" class="comment_name" placeholder="Họ tên" />
+                        <input type="hidden" name="comment_product_id" class="comment_product_id" value="{{$product->product_id}}" />
                     </span>
-                    <textarea name="comment_text"></textarea>
-                    <button type="submit" class="btn btn-default pull-right"
-                            placeholder="Vui lòng đánh giá sản phẩm tại đây!">Bình luận</button>
+                    <textarea name="comment_content" class="comment_content" placeholder="Viết bình luận tại đây"></textarea>
+                    <button type="submit" id="send-comment" class="btn btn-default pull-right">Bình luận</button>
+                    <div id="notify_submit"></div>
+                    <script>
+                        const success = document.querySelector('#send-comment');
+                        success.onclick = function(){
+                        alert('thêm bình luận thành công!');
+                        }
+                    </script>
                 </form>
             </div>
             <div class="recommended_items">
@@ -99,11 +104,6 @@
                                             <i class="fas fa-dollar-sign"></i>{{number_format($product->product_price) }}
                                         </strong>
                                     </h3>
-                                    <button type="button" class="btn btn-default add-to-cart"
-                                            data-id_product="{{ $product->product_id }}" name="add-to-cart">Thêm vào
-                                        giỏ
-                                        <i class="fa fa-cart-plus"></i>
-                                    </button>
                                 </a>
                             </form>
                         </div>

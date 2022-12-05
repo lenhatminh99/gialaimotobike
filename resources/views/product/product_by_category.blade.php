@@ -26,22 +26,6 @@
                     </div>
                     <!-- /.div -->
                     <div class="row">
-                        <div class="btn-group alg-right-pad">
-                            <button type="button" class="btn btn-default">Có tổng cộng n xe máy trên hệ thống</button>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
-                                    Lọc sản phẩm
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Thấp đến cao</a></li>
-                                    <li><a href="#">Cao đến thấp</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                    <div class="row">
                         @foreach($products as $key => $product)
                             <div class="col-md-4 text-center col-sm-6 col-xs-6">
                                 <form class="product-form">

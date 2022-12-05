@@ -27,7 +27,16 @@
                     <!-- /.div -->
                     <div class="row">
                         <div class="btn-group alg-right-pad">
-                            <button type="button" class="btn btn-default">Có tổng cộng n xe máy trên hệ thống</button>
+                            <?php
+                            $dem = 0;
+                            foreach ($danhsachsanpham as $key => $product) {
+                                $n = $product->product_id;
+                                if ($n <= $n + 1) {
+                                    $dem++;
+                                }
+                            }
+                            ?>
+                            <button type="button" class="btn btn-default">Có tổng cộng {{$dem}} xe máy trên hệ thống</button>
                             <div class="btn-group">
                                 <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
                                     Lọc sản phẩm

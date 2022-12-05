@@ -7,6 +7,7 @@ use DB;
 use Session;
 use App\Models\Product;
 use App\Models\CategoryProduct;
+use App\Models\Comment;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 session_start();
@@ -154,5 +155,35 @@ class ProductsController extends Controller
         ->where('tbl_products.product_id',$product_id)->get();
         return view('product.product_details')->with('products', $products)->with('category', $cate_products)
         ->with('list_products',$list_products);
+    }
+    public function send_Comment(Request $request){
+        $product_id = $request->comment_product_id;
+        $comment_name = $request->comment_name;
+        $comment_content = $request->comment_content;
+
+        $comment = new Comment;
+        $comment->comment = $comment_content;
+        $comment->comment_name = $comment_name;
+        $comment->comment_product_id = $product_id;
+        $comment->comment_date = date('Y-m-d H:i:s');
+        $comment->save();
+        return Redirect::to('/chi-tiet-san-pham/'.$product_id);
+    }
+    public function load_Comment(Request $request){
+        $product_id = $request->product_id;
+        $comments = Comment::where('comment_product_id',$product_id)->get();
+        $output = '';
+        foreach ($comments as $key => $comment){
+            $output .= '
+                <div class="col-sm-12 product_comment">
+                <ul>
+                	<li><p><i class="fas fa-user"></i> ' .$comment->comment_name. '</p></li>
+                	<li><p><i class="fa fa-clock-o"></i>'.$comment->comment_date. '</p></li>
+                </ul>
+                <p class="content">' .$comment->comment. '</p>
+                </div>
+                ';
+        };
+        echo $output;
     }
 }

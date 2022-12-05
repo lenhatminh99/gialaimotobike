@@ -38,7 +38,6 @@
                         <li class="nav-item active"><a href="/" class="nav-link">Trang chủ</a></li>
                         <li class="nav-item"><a href="#contact" class="nav-link">Liên hệ</a></li>
                         <li class="nav-item"><a href="{{URL::to('/gio-hang')}}" class="nav-link">Giỏ hàng</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Thanh toán</a></li>
                         @if(Session::get('customer_id') == true)
                             <li class="nav-item dropdown">
                                 <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">

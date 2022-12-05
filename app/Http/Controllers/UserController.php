@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Session;
+use App\Models\Customer;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
+Use Exception;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 
@@ -65,6 +69,8 @@ class UserController extends Controller
     public function logoutCustomer(){
         Session::put('customer_id',null);
         Session::put('customer_name',null);
+        Session::forget('cart');
+        Session::forget('shipping_id');
         return Redirect::to('/');
     }
 }

@@ -12,6 +12,48 @@ session_start();
 
 class CartController extends Controller
 {
+    //phpstorm goi y tao ham insertOrderDonHang de cac ham khac goi lai => do ton tai nguyen, web chay nhanh hon
+    /**
+     * @return void
+     */
+    public function insertOrderDonHang(Request $request): void //ham chu yeu insert vào table, để 2 hàm kia tận dụng lại, chức năng như cũ
+    {
+        $tax = 0;
+        $total = 0;
+        $total_after_tax = 0;
+        foreach (Session::get('cart') as $key => $cart){
+            $subtotal = $cart['product_price'] * $cart['product_qty'];
+            $total += $subtotal;
+            $tax = $total * 0.1;
+            $total_after_tax = $total + $tax;
+        }
+        Session::put('total_after_tax', $total_after_tax);
+        $payment_data = array();
+        $payment_data['payment_method'] = $request->payment_options;
+        $payment_data['payment_status'] = 'Đang chờ xử lý';
+
+        $payment_id = DB::table('tbl_payment')->insertGetId($payment_data);
+
+        $order_data = array();
+        $order_data['customer_id'] = Session::get('customer_id');
+        $order_data['shipping_id'] = Session::get('shipping_id');
+        $order_data['payment_id'] = $payment_id;
+        $order_data['order_total'] = $total_after_tax;
+        $order_data['order_status'] = 'Đang chờ xử lý';
+
+        $order_id = DB::table('tbl_order')->insertGetId($order_data);
+        Session::put('order_id', $order_id);
+
+        $order_details_data= array();
+        foreach (Session::get('cart') as $key => $cart){
+            $order_details_data['order_id'] = $order_id;
+            $order_details_data['product_id'] = $cart['product_id'];
+            $order_details_data['product_name'] = $cart['product_name'];
+            $order_details_data['product_price'] = $cart['product_price'];
+            $order_details_data['product_sales_quantity'] = $cart['product_qty'];
+            $order_details_id = DB::table('tbl_order_details')->insert($order_details_data);
+        }
+    }
     public function Authlogin(){
         $admin_id= Session::get('admin_id');
         if($admin_id){
@@ -133,67 +175,46 @@ class CartController extends Controller
         return view('cart.payment')->with('category', $cate_products);
     }
     public function save_payment_Customer(Request $request){
-        $cate_products = DB::table('tbl_category_products')->where('category_status', '1')->orderby('category_id', 'desc')->get();
-        $tax = 0;
-        $total = 0;
-        $total_after_tax = 0;
-        foreach (Session::get('cart') as $key => $cart){
-            $subtotal = $cart['product_price'] * $cart['product_qty'];
-            $total += $subtotal;
-            $tax = $total * 0.1;
-            $total_after_tax = $total + $tax;
-        }
-
-        //insert payment - phuong thuc thanh toan
-        $payment_data= array();
-            $payment_data['payment_method'] = $request->payment_options;
-            $payment_data['payment_status'] = 'Đang chờ xử lý';
-
-            // $validated = $request->validate([
-            // 'payment_method' => 'required',
-            // ]);
-            // if(!$validated){
-            // return Redirect::to('/payment')->withErrors($validated);
-            // }else{
-            $payment_id = DB::table('tbl_payment')->insertGetId($payment_data);
-            // }
-
-        //insert order - don hang
-        $order_data= array();
-            $order_data['customer_id'] = Session::get('customer_id');
-            $order_data['shipping_id'] = Session::get('shipping_id');
-            $order_data['payment_id'] = $payment_id;
-            $order_data['order_total'] = $total_after_tax;
-            $order_data['order_status'] = 'Đang chờ xử lý';
-
-            $order_id = DB::table('tbl_order')->insertGetId($order_data);
-
-        //insert order details - chi tiet don hang
-        $order_details_data= array();
-        foreach (Session::get('cart') as $key => $cart){
-            $order_details_data['order_id'] = $order_id;
-            $order_details_data['product_id'] = $cart['product_id'];
-            $order_details_data['product_name'] = $cart['product_name'];
-            $order_details_data['product_price'] = $cart['product_price'];
-            $order_details_data['product_sales_quantity'] = $cart['product_qty'];
-            $order_details_id = DB::table('tbl_order_details')->insert($order_details_data);
-        }
-        if($payment_data['payment_method']==1){
-            // echo 'Chức năng thanh toán bằng thẻ atm đang hoàn thiện';
+        //gọi lại hàm đầu tiên
+        $this->insertOrderDonHang($request);
+        if($request->payment_options==1){
+            // echo 'Chức năng thanh toán bằng thẻ ghi nợ đang hoàn thiện';
+            //thanh toan visa / mastercard
             Session::forget('cart');
             Session::forget('shipping_id');
-            return view('cart.handcash')->with('category', $cate_products);
-        }elseif($payment_data['payment_method']==2){
+            return view('cart.handcash');
+        }elseif($request->payment_options==2){
+            //thanh toan tien mat
             Session::forget('cart');
             Session::forget('shipping_id');
-            return view('cart.handcash')->with('category', $cate_products);
+            return view('cart.handcash');
+        }elseif($request->payment_options==3){
+            // echo ' Chức năng thanh toán bằng momo đang hoàn thiện';
+            //thanh toan momo
+            Session::forget('cart');
+            Session::forget('shipping_id');
+            return view('cart.handcash');
         }else{
-            // echo ' Chức năng thanh toán bằng thẻ ghi nợ đang hoàn thiện';
-            Session::forget('cart');
-            Session::forget('shipping_id');
-            return view('cart.handcash')->with('category', $cate_products);
+            return view('cart.tra_gop');
         }
             // return Redirect::to('/payment');
+    }
+    public function done_Order(Request $request){
+        //gọi lại hàm đầu tiên
+        $this->insertOrderDonHang($request);
+
+        $tragop_data= array();
+        $tragop_data['order_id'] = Session::get('order_id');
+        $tragop_data['customer_id'] = Session::get('customer_id');
+        $tragop_data['shipping_id'] = Session::get('shipping_id');
+        $tragop_data['order_total'] = Session::get('total_after_tax');
+        $tragop_data['monthly_pay'] = $request->monthly_pay;
+        $tragop_data['order_status'] = 'Đang chờ xử lý';
+
+        DB::table('tbl_tragop')->insertGetId($tragop_data);
+        Session::forget('cart');
+        Session::forget('shipping_id');
+        return view('cart.handcash');
     }
     public function manage_Order(){
         $this->Authlogin();
