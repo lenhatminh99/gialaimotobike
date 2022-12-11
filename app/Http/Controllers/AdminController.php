@@ -77,14 +77,7 @@ class AdminController extends Controller
         return Redirect::to('/admin');
    	}
     public function show_Customer_Message(){
-        $customer_message = DB::table('tbl_sendmessage')->get();
+        $customer_message = DB::table('tbl_contact')->get();
         return view('admin.customer_message')->with('customer_message',$customer_message);
-    }
-    public function save_Customer_Message(Request $request){
-        $customer_message = array();
-        $customer_message['message_content'] = $request->message_content;
-
-        DB::table('tbl_sendmessage')->insertGetId($customer_message);
-        return Redirect::to('/')->with('message','Để lại lời nhắn thành công');
     }
 }

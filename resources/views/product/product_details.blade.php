@@ -4,7 +4,7 @@
         <div class="container">
             <div>
                 <ol class="breadcrumb">
-                    <li>Chi tiết sản phẩm</li>
+                    <li>CHI TIẾT SẢN PHẨM</li>
                 </ol>
             </div>
             <div class="row" style="margin-bottom: 4em;">
@@ -52,16 +52,26 @@
                 <form>
                     @csrf
                     <input type="hidden" name="comment_product_id" class="comment_product_id" value="{{$product->product_id}}" />
+
                     <div id="comment_show"></div>
                 </form>
                 <p><b>Viết bình luận</b></p>
                 <form action="{{URL::to('/send-comment')}}" method="post">
                     @csrf
-                    <span>
-                        <input type="text" name="comment_name" class="comment_name" placeholder="Họ tên" />
-                        <input type="hidden" name="comment_product_id" class="comment_product_id" value="{{$product->product_id}}" />
-                    </span>
-                    <textarea name="comment_content" class="comment_content" placeholder="Viết bình luận tại đây"></textarea>
+                    <input type="hidden" name="comment_product_id" class="comment_product_id" value="{{$product->product_id}}" />
+                    @if(!session::get('customer_id'))
+                        <span>
+                            <input type="text" name="comment_name" class="comment_name" placeholder="Họ tên">
+                        </span>
+                        <textarea name="comment_content" class="comment_content" placeholder="Viết bình luận tại đây"></textarea>
+                    @else
+                        <span>
+                                <input type="text" name="comment_name" class="comment_name"
+                                       value="{{session::get('customer_name')}}" disabled>
+{{--                            cach 2: dung foreach lap qua, ma thay cach nay nhanh nen xai luon--}}
+                        </span>
+                        <textarea name="comment_content" class="comment_content" placeholder="Viết bình luận tại đây"></textarea>
+                    @endif
                     <button type="submit" id="send-comment" class="btn btn-default pull-right">Bình luận</button>
                     <div id="notify_submit"></div>
                     <script>

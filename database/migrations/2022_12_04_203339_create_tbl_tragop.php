@@ -21,6 +21,7 @@ class CreateTblTragop extends Migration
             $table->string('order_total');
             $table->integer('monthly_pay');
             $table->string('order_status');
+            $table->string('deadline_pay');
             $table->timestamps();
         });
     }

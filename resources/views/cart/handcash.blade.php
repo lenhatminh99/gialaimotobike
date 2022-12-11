@@ -3,7 +3,7 @@
     <div class="container">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
-                <li class="active">Thanh toán</li>
+                <li class="active">THANH TOÁN</li>
             </ol>
         </div>
         <div class="review-payment">

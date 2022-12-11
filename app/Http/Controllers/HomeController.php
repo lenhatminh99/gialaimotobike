@@ -27,9 +27,8 @@ class HomeController extends Controller
         $search_product = DB::table('tbl_products')
         ->where('product_status','1')
         ->where('product_name','like','%'.$keywords.'%')
-        ->orwhere('product_desc','like','%'.$keywords.'%')
         ->orwhere('product_price','like','%'.$keywords.'%')
         ->get();
-        return view('pages.product.search')->with('category', $cate_products)->with('search_product', $search_product);
+        return view('product.search')->with('category', $cate_products)->with('search_product', $search_product);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TblSendmessage extends Migration
+class CreateTblContact extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class TblSendmessage extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_sendmessage', function (Blueprint $table) {
+        Schema::create('tbl_contact', function (Blueprint $table) {
             $table->increments('message_id');
-            $table->string('message_content');
+            $table->string('email_contact');
+            $table->string('username_contact');
+            $table->string('address_contact');
+            $table->string('content_contact');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class TblSendmessage extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_sendmessage');
+        Schema::dropIfExists('tbl_contact');
     }
 }

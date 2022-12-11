@@ -24,7 +24,10 @@
                 @endforeach
             <form action="{{URL::to('/done-order')}}" method="post">
                 @csrf
-                <input type="hidden" name="payment_options" value="4">
+{{--                <input type="hidden" name="payment_options" value="4">--}}
+{{--                lúc trước gọi lại hàm insertOrderDonHang trong done_Order là sai -> vì nó gọi lại lần 2 mà--}}
+{{--                form tra_gop ko có cái payment_options nên nó báo null, vì vậy mình phải truyền cái input bên trên để nó biết đc cái payment_options--}}
+{{--                nhưng giờ sửa lại rồi, nó chỉ chạy qua lần đầu và lấy được payment_options oke.--}}
                 <div class="total_area">
                     <table class="table table-dark">
                         <thead>
@@ -38,73 +41,93 @@
                         <tbody>
                         <tr>
                             <td><span>3 Tháng</span></td>
-                            <td><span>{{ number_format($total_after_tax / 3) }}đ</span></td>
+                            <td><span>{{ number_format(
+                        ($total_after_tax / 3) + ($total_after_tax * 0.03)/3
+                        ) }}đ</span></td>
                             <td><span>0.3%</span></td>
-                            <td><span>{{ number_format($total_after_tax * 0.3) }}đ</span></td>
-                            <td><input type="submit" name="monthly_pay" value="3"></td>
+                            <td><span>{{ number_format($total_after_tax * 0.03) }}đ</span></td>
+                            <td><button type="submit" name="monthly_pay" value="3">Chọn</button></td>
                         </tr>
                         <tr>
                             <td><span>6 Tháng</span></td>
-                            <td><span>{{ number_format($total_after_tax / 6) }}đ</span></td>
+                            <td><span>{{ number_format(
+                        ($total_after_tax / 6) + ($total_after_tax * 0.06)/6
+                        ) }}đ</span></td>
                             <td><span>0.6%</span></td>
-                            <td><span>{{ number_format($total_after_tax * 0.6) }}đ</span></td>
-                            <td><input type="submit" name="monthly_pay" value="6"></td>
+                            <td><span>{{ number_format($total_after_tax * 0.06) }}đ</span></td>
+                            <td><button type="submit" name="monthly_pay" value="6">Chọn</button></td>
                         </tr>
                         <tr>
                             <td><span>9 Tháng</span></td>
-                            <td><span>{{ number_format($total_after_tax / 9) }}đ</span></td>
+                            <td><span>{{ number_format(
+                        ($total_after_tax / 9) + ($total_after_tax * 0.9)/9
+                        ) }}đ</span></td>
                             <td><span>0.9%</span></td>
-                            <td><span>{{ number_format($total_after_tax * 0.9) }}đ</span></td>
-                            <td><input type="submit" name="monthly_pay" value="9"></td>
+                            <td><span>{{ number_format($total_after_tax * 0.09) }}đ</span></td>
+                            <td><button type="submit" name="monthly_pay" value="9">Chọn</button></td>
                         </tr>
                         <tr>
                             <td><span>12 Tháng</span></td>
-                            <td><span>{{ number_format($total_after_tax / 12) }}đ</span></td>
+                            <td><span>{{ number_format(
+                        ($total_after_tax / 12) + ($total_after_tax * 0.12)/12
+                        ) }}đ</span></td>
                             <td><span>1.2%</span></td>
-                            <td><span>{{ number_format($total_after_tax * 1.2) }}đ</span></td>
-                            <td><input type="submit" name="monthly_pay" value="12"></td>
+                            <td><span>{{ number_format($total_after_tax * 0.12) }}đ</span></td>
+                            <td><button type="submit" name="monthly_pay" value="12">Chọn</button></td>
                         </tr>
                         <tr>
                             <td><span>15 Tháng</span></td>
-                            <td><span>{{ number_format($total_after_tax / 15) }}đ</span></td>
+                            <td><span>{{ number_format(
+                        ($total_after_tax / 15) + ($total_after_tax * 0.15)/15
+                        ) }}đ</span></td>
                             <td><span>1.5%</span></td>
-                            <td><span>{{ number_format($total_after_tax * 1.5) }}đ</span></td>
-                            <td><input type="submit" name="monthly_pay" value="15"></td>
+                            <td><span>{{ number_format($total_after_tax * 0.15) }}đ</span></td>
+                            <td><button type="submit" name="monthly_pay" value="15">Chọn</button></td>
                         </tr>
                         <tr>
                             <td><span>18 Tháng</span></td>
-                            <td><span>{{ number_format($total_after_tax / 18) }}đ</span></td>
+                            <td><span>{{ number_format(
+                        ($total_after_tax / 18) + ($total_after_tax * 0.18)/18
+                        ) }}đ</span></td>
                             <td><span>1.8%</span></td>
-                            <td><span>{{ number_format($total_after_tax * 1.8) }}đ</span></td>
-                            <td><input type="submit" name="monthly_pay" value="18"></td>
+                            <td><span>{{ number_format($total_after_tax * 0.18) }}đ</span></td>
+                            <td><button type="submit" name="monthly_pay" value="18">Chọn</button></td>
                         </tr>
                         <tr>
                             <td><span>21 Tháng</span></td>
-                            <td><span>{{ number_format($total_after_tax / 21) }}đ</span></td>
+                            <td><span>{{ number_format(
+                        ($total_after_tax / 21) + ($total_after_tax * 0.21)/21
+                        ) }}đ</span></td>
                             <td><span>2.1%</span></td>
-                            <td><span>{{ number_format($total_after_tax * 2.1) }}đ</span></td>
-                            <td><input type="submit" name="monthly_pay" value="21"></td>
+                            <td><span>{{ number_format($total_after_tax * 0.21) }}đ</span></td>
+                            <td><button type="submit" name="monthly_pay" value="21">Chọn</button></td>
                         </tr>
                         <tr>
                             <td><span>24 Tháng</span></td>
-                            <td><span>{{ number_format($total_after_tax / 24) }}đ</span></td>
+                            <td><span>{{ number_format(
+                        ($total_after_tax / 24) + ($total_after_tax * 0.21)/21
+                        ) }}đ</span></td>
                             <td><span>2.4%</span></td>
-                            <td><span>{{ number_format($total_after_tax * 2.4) }}đ</span></td>
-                            <td><input type="submit" name="monthly_pay" value="24"></td>
+                            <td><span>{{ number_format($total_after_tax * 0.24) }}đ</span></td>
+                            <td><button type="submit" name="monthly_pay" value="24">Chọn</button></td>
                         </tr>
                         <tr>
                             <td><span>27 Tháng</span></td>
-                            <td><span>{{ number_format($total_after_tax / 27) }}đ</span></td>
+                            <td><span>{{ number_format(
+                        ($total_after_tax / 27) + ($total_after_tax * 0.27)/27
+                        ) }}đ</span></td>
                             <td><span>2.7%</span></td>
-                            <td><span>{{ number_format($total_after_tax * 2.7) }}đ</span></td>
-                            <td><input type="submit" name="monthly_pay" value="27"></td>
+                            <td><span>{{ number_format($total_after_tax * 0.27) }}đ</span></td>
+                            <td><button type="submit" name="monthly_pay" value="27">Chọn</button></td>
                         </tr>
                         <tr>
                             <td><span>30 Tháng</span></td>
-                            <td><span>{{ number_format($total_after_tax / 30) }}đ</span></td>
+                            <td><span>{{ number_format(
+                        ($total_after_tax / 30) + ($total_after_tax * 0.3)/30
+                        ) }}đ</span></td>
                             <td><span>3%</span></td>
-                            <td><span>{{ number_format($total_after_tax * 3) }}đ</span></td>
-                            <td><input type="submit" name="monthly_pay" value="30"></td>
+                            <td><span>{{ number_format($total_after_tax * 0.3) }}đ</span></td>
+                            <td><button type="submit" name="monthly_pay" value="30">Chọn</button></td>
                         </tr>
                         </tbody>
                     </table>

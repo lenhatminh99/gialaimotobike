@@ -4,7 +4,7 @@
         <section id="cart_items">
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
-                    <li class="active">Đặt hàng</li>
+                    <li class="active">ĐẶT HÀNG</li>
                 </ol>
             </div>
             <div class="row">

@@ -58,6 +58,7 @@ class UserController extends Controller
         if($result){
             Session::put('customer_id',$result->customer_id);
             Session::put('customer_name',$result->customer_name);
+            Session::put('customer_email',$result->customer_email);
 //            Session::forget('cart');
 //            Session::forget('shipping_id');
             return Redirect::to('/');
@@ -71,6 +72,21 @@ class UserController extends Controller
         Session::put('customer_name',null);
         Session::forget('cart');
         Session::forget('shipping_id');
+        return Redirect::to('/');
+    }
+
+    public function contact(Request $request){
+        $contact = Array();
+        if(!session::get('customer_id')){
+            $contact['email_contact'] = $request->email_contact;
+            $contact['username_contact'] = $request->username_contact;
+        }else{
+            $contact['email_contact'] = session::get('customer_email');
+            $contact['username_contact'] = session::get('customer_name');
+        }
+        $contact['address_contact'] = $request->address_contact;
+        $contact['content_contact'] = $request->content_contact;
+        $insert_contact = DB::table('tbl_contact')->insertGetId($contact);
         return Redirect::to('/');
     }
 }

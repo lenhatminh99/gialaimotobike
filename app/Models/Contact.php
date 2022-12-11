@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SendMessage extends Model
+class Contact extends Model
 {
     public $timestamps = false;
     protected $fillable = [
-         'message_id' , 'message_content'
+         'message_id' , 'email_contact', 'username_contact', 'address_contact', 'content_contact'
 ];
 
     protected $primaryKey = 'message_id';
-    protected $table = 'tbl_sendmessage';
+    protected $table = 'tbl_contact';
 }

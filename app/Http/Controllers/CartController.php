@@ -199,10 +199,13 @@ class CartController extends Controller
         }
             // return Redirect::to('/payment');
     }
-    public function done_Order(Request $request){
+    public function done_Order(Request $request){ //ham tra gop, ko biet dat ten gi
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
         //gọi lại hàm đầu tiên
-        $this->insertOrderDonHang($request);
-
+//        $this->insertOrderDonHang($request);
+        //khúc này nếu gọi hàm insertOrderDonHang() sẽ bị thêm dữ liệu vô database 2 lần, để ý khi chạy dd(),
+        //nó chạy qua hàm save_payment_Customer() để mình chọn 1 trong 4 phương thức thanh toán trước
+        //là nó đã thêm dữ liệu vô 1 lần rồi, nên gọi lại hàm insertOrderDonHang() trong đây sẽ gọi lại lần 2
         $tragop_data= array();
         $tragop_data['order_id'] = Session::get('order_id');
         $tragop_data['customer_id'] = Session::get('customer_id');
@@ -210,7 +213,11 @@ class CartController extends Controller
         $tragop_data['order_total'] = Session::get('total_after_tax');
         $tragop_data['monthly_pay'] = $request->monthly_pay;
         $tragop_data['order_status'] = 'Đang chờ xử lý';
+        $tragop_data['deadline_pay'] = date('d-m-Y');
 
+        $first_month = strtotime($tragop_data['deadline_pay']);
+        $last_month = date('d-m-Y', strtotime("+ $request->monthly_pay month", $first_month));
+        Session::put('last_month', $last_month);
         DB::table('tbl_tragop')->insertGetId($tragop_data);
         Session::forget('cart');
         Session::forget('shipping_id');
@@ -226,6 +233,16 @@ class CartController extends Controller
         $manager_order = view('admin.manage_order')->with('all_order', $all_order);
         return view('admin_layout')->with('admin.manager_order', $manager_order);
     }
+    public function manage_Tra_Gop(){
+        $this->Authlogin();
+        $all_order = DB::table('tbl_tragop')
+            ->join('tbl_customers','tbl_customers.customer_id','=','tbl_tragop.customer_id')
+            ->select('tbl_customers.*','tbl_tragop.*')
+            ->orderby('tbl_tragop.order_id','asc')
+            ->get();
+        $manager_order = view('admin.manage_tra_gop')->with('all_order', $all_order);
+        return view('admin_layout')->with('admin.manager_tra_gop', $manager_order);
+    }
     public function details_Order($order_id){
         $this->Authlogin();
         // $a=Product->categoyproduct($id);
@@ -235,6 +252,17 @@ class CartController extends Controller
         ->where('tbl_order_details.order_id',$order_id)
         ->get();
         $manager_details_order =  view('admin.details_order')->with('order_details_data',$order_details_data);
+        return view('admin_layout')->with('admin.manager_details_order', $manager_details_order);
+    }
+    public function details_Tra_Gop($order_id){
+        $this->Authlogin();
+        // $a=Product->categoyproduct($id);
+        $all_order = DB::table('tbl_tragop')
+            ->join('tbl_order_details','tbl_order_details.order_id','=','tbl_tragop.order_id')
+            ->select('tbl_order_details.*','tbl_tragop.*')
+            ->where('tbl_order_details.order_id',$order_id)
+            ->get();
+        $manager_details_order =  view('admin.details_tra_gop')->with('all_order',$all_order);
         return view('admin_layout')->with('admin.manager_details_order', $manager_details_order);
     }
     public function accept_Order($order_id){

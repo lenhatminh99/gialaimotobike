@@ -4,7 +4,7 @@
         <section id="cart_items">
                 <div class="breadcrumbs">
                     <ol class="breadcrumb">
-                        <li class="active">Giỏ hàng</li>
+                        <li class="active">GIỎ HÀNG</li>
                     </ol>
                 </div>
                 @if (session('message'))

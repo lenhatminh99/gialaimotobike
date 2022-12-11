@@ -22,6 +22,7 @@ use App\Http\Controllers\UserController;
 //Route::get('/',[HomeController::class, 'index']);
 //home -> show product
 Route::get('/',[ProductsController::class,'showProduct']);
+Route::post('/tim-kiem', [HomeController::class, 'Search']);
 //home -> show product by category
 Route::get('/show-product',[ProductsController::class, 'showProductWhenClickBuy']);
 Route::get('/product-by-category/{category_id}', [ProductsController::class, 'show_Product_ByCategory']);
@@ -57,7 +58,8 @@ Route::post('/save-checkout-customer', [CartController::class, 'save_Checkout_Cu
 Route::get('/payment',[CartController::class, 'payment']);
 Route::post('/save-payment-customer', [CartController::class, 'save_payment_Customer']);
 
-
+//contact
+Route::post('/contact', [UserController::class, 'contact']);
 
 
 
@@ -100,7 +102,9 @@ Route::post('/update-products/{products_id}', [ProductsController::class, 'updat
 
 //----------------------------------------------Admin - Order routes-----------------------------------------------------------//
 Route::get('/manage-order', [CartController::class, 'manage_Order']);
+Route::get('/manage-tra-gop', [CartController::class, 'manage_Tra_Gop']);
 Route::get('/details-order/{order_id}', [CartController::class, 'details_Order']);
+Route::get('/details-tra-gop/{order_id}', [CartController::class, 'details_Tra_Gop']);
 Route::get('/accept-order/{order_id}', [CartController::class, 'accept_Order']);
 Route::get('/deny-order/{order_id}', [CartController::class, 'deny_Order']);
 

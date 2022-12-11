@@ -50,9 +50,9 @@ $(document).ready(function() {
 });
 
 //cai nay cu roi ko xai, payment chuyen tu input -> submit
-$('input.chk').on('change', function() {
-    $('input.chk').not(this).prop('checked', false);
-});
+// $('input.chk').on('change', function() {
+//     $('input.chk').not(this).prop('checked', false);
+// });
 
 
 //comment in product

@@ -21,7 +21,7 @@
                 <div class="col-md-9">
                     <div>
                         <ol class="breadcrumb">
-                            <li><a href="/">Trang chủ</a></li>
+                            <li>SẢN PHẨM THEO DANH MỤC</li>
                         </ol>
                     </div>
                     <!-- /.div -->

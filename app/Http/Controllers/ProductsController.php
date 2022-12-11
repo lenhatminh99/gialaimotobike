@@ -10,6 +10,7 @@ use App\Models\CategoryProduct;
 use App\Models\Comment;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
+
 session_start();
 
 
@@ -153,12 +154,18 @@ class ProductsController extends Controller
         $products = DB::table('tbl_products')
         ->join('tbl_category_products','tbl_category_products.category_id','=','tbl_products.category_id')
         ->where('tbl_products.product_id',$product_id)->get();
+        session::get('customer_id');
+        //ko biet vi sao 4 file product ko get dc session, nen them session zo ham cai no moi chay duoc.
         return view('product.product_details')->with('products', $products)->with('category', $cate_products)
         ->with('list_products',$list_products);
     }
     public function send_Comment(Request $request){
         $product_id = $request->comment_product_id;
-        $comment_name = $request->comment_name;
+        if(!session::get('customer_id')){
+            $comment_name = $request->comment_name;
+        }else{
+            $comment_name = session::get('customer_name');
+        }
         $comment_content = $request->comment_content;
 
         $comment = new Comment;
