@@ -1,0 +1,20 @@
+{
+    "raleway": {
+        "100": "C:\\wamp64\\www\\gialaimotobike\\storage\\fonts\/raleway_100_19d6175205ce7a6195ce3c34cb0a6612",
+        "600": "raleway_600_680162e22c2503082b6c31a243da744a"
+    },
+    "roboto": {
+        "100": "C:\\wamp64\\www\\gialaimotobike\\storage\\fonts\/roboto_100_d876775dd3daf87873e6dd250e9c4c9e",
+        "300": "C:\\wamp64\\www\\gialaimotobike\\storage\\fonts\/roboto_300_21960201651f2ea862182ff34dfd5ead",
+        "normal": "C:\\wamp64\\www\\gialaimotobike\\storage\\fonts\/roboto_normal_9fa47a070a8b30b595086d70bb7ac78c",
+        "bold": "C:\\wamp64\\www\\gialaimotobike\\storage\\fonts\/roboto_bold_3d0ad20d45ace845335f9e6c390a09d9",
+        "500": "roboto_500_d0dcda9e813eb9b854a1cc044831f6fe"
+    },
+    "font awesome 5 brands": {
+        "normal": "font_awesome_5_brands_normal_64e570df753d2034ff4dea34374e39c9"
+    },
+    "font awesome 5 free": {
+        "normal": "C:\\wamp64\\www\\gialaimotobike\\storage\\fonts\/font_awesome_5_free_normal_9e0707137c804c0e0299d6a0040c87c2",
+        "900": "font_awesome_5_free_900_dee497e58672073b8488fad3bc5c6c54"
+    }
+}

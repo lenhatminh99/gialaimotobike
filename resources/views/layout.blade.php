@@ -51,10 +51,9 @@
                                         </span>
                                 </a>
                                 <ul class="dropdown-menu extended logout">
-                                    <li><a href="#"><i class=" fa fa-suitcase"></i>Thông tin</a></li>
+                                    <li><a href="{{URL::to('/lich-su-mua-hang/'. Session::get('customer_id'))}}"><i class=" fa fa-suitcase"></i>Lịch sử mua hàng</a></li>
                                     <li><a href="{{ URL::to('/logout-customer') }}"><i
-                                                class="fa fa-key"></i>Đăng
-                                            xuất</a></li>
+                                                class="fa fa-key"></i>Đăng xuất</a></li>
                                 </ul>
                             </li>
                         @else
@@ -215,7 +214,7 @@
                         <!--Grid column-->
                         <div class="col-auto">
                             <p class="pt-2">
-                                <strong>Sign up for our newsletter</strong>
+                                <strong>Nhận ngay các thông tin mới nhất:</strong>
                             </p>
                         </div>
                         <!--Grid column-->
@@ -234,7 +233,7 @@
                         <div class="col-auto">
                             <!-- Submit button -->
                             <button type="submit" class="btn btn-outline-light mb-4">
-                                Subscribe
+                                Nhận ngay!
                             </button>
                         </div>
                         <!--Grid column-->
@@ -247,111 +246,19 @@
             <!-- Section: Text -->
             <section class="mb-4">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-                    repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
-                    eum harum corrupti dicta, aliquam sequi voluptate quas.
+                    Xe máy Gia Lai - Ve chai đồng nát <br />Chuyên phân phối xe máy các loại đâm đụng, té ngã, xe tai nạn,...
                 </p>
             </section>
             <!-- Section: Text -->
 
-            <!-- Section: Links -->
-            <section class="">
-                <!--Grid row-->
-                <div class="row">
-                    <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase">Links</h5>
-
-                        <ul class="list-unstyled mb-0">
-                            <li>
-                                <a href="#!" class="text-white">Link 1</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="text-white">Link 2</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="text-white">Link 3</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="text-white">Link 4</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase">Links</h5>
-
-                        <ul class="list-unstyled mb-0">
-                            <li>
-                                <a href="#!" class="text-white">Link 1</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="text-white">Link 2</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="text-white">Link 3</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="text-white">Link 4</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase">Links</h5>
-
-                        <ul class="list-unstyled mb-0">
-                            <li>
-                                <a href="#!" class="text-white">Link 1</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="text-white">Link 2</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="text-white">Link 3</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="text-white">Link 4</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase">Links</h5>
-
-                        <ul class="list-unstyled mb-0">
-                            <li>
-                                <a href="#!" class="text-white">Link 1</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="text-white">Link 2</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="text-white">Link 3</a>
-                            </li>
-                            <li>
-                                <a href="#!" class="text-white">Link 4</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--Grid column-->
-                </div>
-                <!--Grid row-->
-            </section>
             <!-- Section: Links -->
         </div>
         <!-- Grid container -->
 
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2020 Copyright:
-            <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+            © 2022 Copyright:
+            <a class="text-white" href="#">Gia Lai Motobike</a>
         </div>
         <!-- Copyright -->
     </footer>

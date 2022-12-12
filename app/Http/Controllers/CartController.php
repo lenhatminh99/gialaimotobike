@@ -245,7 +245,6 @@ class CartController extends Controller
     }
     public function details_Order($order_id){
         $this->Authlogin();
-        // $a=Product->categoyproduct($id);
         $order_details_data = DB::table('tbl_order')
         ->join('tbl_order_details','tbl_order_details.order_id','=','tbl_order.order_id')
         ->select('tbl_order.*','tbl_order_details.*')
@@ -256,7 +255,6 @@ class CartController extends Controller
     }
     public function details_Tra_Gop($order_id){
         $this->Authlogin();
-        // $a=Product->categoyproduct($id);
         $all_order = DB::table('tbl_tragop')
             ->join('tbl_order_details','tbl_order_details.order_id','=','tbl_tragop.order_id')
             ->select('tbl_order_details.*','tbl_tragop.*')

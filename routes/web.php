@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PdfController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,6 +62,7 @@ Route::post('/save-payment-customer', [CartController::class, 'save_payment_Cust
 //contact
 Route::post('/contact', [UserController::class, 'contact']);
 
+Route::get('/lich-su-mua-hang/{customer_id}', [PdfController::class, 'pdf_DonHang']);
 
 
 //-----------------------------------------------------------------Admin routes-----------------------------------------------------//

@@ -59,6 +59,7 @@ class UserController extends Controller
             Session::put('customer_id',$result->customer_id);
             Session::put('customer_name',$result->customer_name);
             Session::put('customer_email',$result->customer_email);
+            Session::put('customer_phone',$result->customer_phone);
 //            Session::forget('cart');
 //            Session::forget('shipping_id');
             return Redirect::to('/');
