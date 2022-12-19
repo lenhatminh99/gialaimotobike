@@ -169,10 +169,10 @@ class ProductsController extends Controller
         $comment_content = $request->comment_content;
 
         $comment = new Comment;
-        $comment->comment = $comment_content;
-        $comment->comment_name = $comment_name;
-        $comment->comment_product_id = $product_id;
-        $comment->comment_date = date('Y-m-d H:i:s');
+        $comment['comment'] = $comment_content;
+        $comment['comment_name'] = $comment_name;
+        $comment['comment_product_id'] = $product_id;
+        $comment['comment_date'] = date('Y-m-d H:i:s');
         $comment->save();
         return Redirect::to('/chi-tiet-san-pham/'.$product_id);
     }

@@ -61,25 +61,25 @@
                     <input type="hidden" name="comment_product_id" class="comment_product_id" value="{{$product->product_id}}" />
                     @if(!session::get('customer_id'))
                         <span>
-                            <input type="text" name="comment_name" class="comment_name" placeholder="Họ tên">
+                            <input type="text" name="comment_name" class="comment_name" placeholder="Họ tên" required>
                         </span>
-                        <textarea name="comment_content" class="comment_content" placeholder="Viết bình luận tại đây"></textarea>
+                        <textarea name="comment_content" class="comment_content" placeholder="Viết bình luận tại đây" required></textarea>
                     @else
                         <span>
                                 <input type="text" name="comment_name" class="comment_name"
                                        value="{{session::get('customer_name')}}" disabled>
 {{--                            cach 2: dung foreach lap qua, ma thay cach nay nhanh nen xai luon--}}
                         </span>
-                        <textarea name="comment_content" class="comment_content" placeholder="Viết bình luận tại đây"></textarea>
+                        <textarea name="comment_content" class="comment_content" placeholder="Viết bình luận tại đây" required></textarea>
                     @endif
                     <button type="submit" id="send-comment" class="btn btn-default pull-right">Bình luận</button>
                     <div id="notify_submit"></div>
-                    <script>
-                        const success = document.querySelector('#send-comment');
-                        success.onclick = function(){
-                        alert('thêm bình luận thành công!');
-                        }
-                    </script>
+{{--                    <script>--}}
+{{--                        const success = document.querySelector('#send-comment');--}}
+{{--                        success.onclick = function(){--}}
+{{--                        alert('thêm bình luận thành công!');--}}
+{{--                        }--}}
+{{--                    </script>--}}
                 </form>
             </div>
             <div class="recommended_items">

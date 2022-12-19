@@ -47,13 +47,13 @@ class AdminController extends Controller
     // }
     public function show_dashboard(){
         $this->Authlogin();
-        // return view('admin.dashboard');
-        $all_order = DB::table('tbl_order')
-        ->join('tbl_customers','tbl_customers.customer_id','=','tbl_order.customer_id')
-        ->select('tbl_order.*','tbl_customers.*')
-        ->get();
-        $clients = DB::table('tbl_customers')->get();
-        return view('admin.dashboard')->with('all_order', $all_order)->with('clients',$clients);
+        $clients = sizeof(DB::table('tbl_customers')->select('customer_id')->get());
+        session::put('clients',$clients);
+        $all_order = sizeof(DB::table('tbl_order')->select('order_id')->get());
+        session::put('all_order',$all_order);
+        $order_total = number_format(DB::table('tbl_order')->sum('tbl_order.order_total'));
+        session::put('order_total',$order_total);
+        return view('admin.dashboard');
     }
     public function login(Request $request){
    		$admin_mail = $request->admin_mail;

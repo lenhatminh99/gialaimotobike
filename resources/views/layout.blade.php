@@ -132,7 +132,7 @@
             <div class="form-group col-md-3">
                 <label for="inputEmail4">Email</label>
                 @if(!session::get('customer_id'))
-                    <input type="email" class="form-control" name="email_contact" placeholder="exam@gmail.com">
+                    <input type="email" class="form-control" name="email_contact" placeholder="exam@gmail.com" required>
                 @else
                 <input type="email" class="form-control"
                        name="email_contact" value="{{session::get('customer_email')}}" disabled>
@@ -142,7 +142,7 @@
                 <label for="inputPassword4">Tên tài khoản</label>
                 @if(!session::get('customer_id'))
                     <input type="text" class="form-control"
-                           name="username_contact" placeholder="Nguyễn Văn A">
+                           name="username_contact" placeholder="Nguyễn Văn A" required>
                 @else
                     <input type="email" class="form-control"
                            name="email_contact" value="{{session::get('customer_name')}}" disabled>
@@ -153,16 +153,16 @@
             <div class="form-group col-md-6">
                 <label for="inputAddress">Địa chỉ</label>
                 <input type="text" class="form-control"
-                       name="address_contact" placeholder="125/159A Nguyễn Thị Tần">
+                       name="address_contact" placeholder="125/159A Nguyễn Thị Tần" required>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="inputAddress">Nội dung</label>
                 <textarea type="text" class="form-control"
-                          name="content_contact" placeholder="Nhập nội dung tin nhắn vào đây..."></textarea>
+                          name="content_contact" placeholder="Nhập nội dung tin nhắn vào đây..." required></textarea>
             </div>
-            <button type="submit" id="send-contact" onclick="alert('Gửi phản hồi thành công!');" class="btn btn-primary">Gửi</button>
+            <button type="submit" id="send-contact" class="btn btn-primary">Gửi</button>
         </div>
     </form>
 </div>

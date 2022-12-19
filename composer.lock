@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c55438f009b75e16cf4fcf11e02d0f68",
+    "content-hash": "b912bbe4ad4abc02ab5397296745afd5",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5701,6 +5701,51 @@
             "time": "2022-09-12T13:28:28+00:00"
         },
         {
+            "name": "vatttan/apdf",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vatttanweb/APdf.git",
+                "reference": "64dea18709fda0d5648545763acda3de7e43c10d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vatttanweb/APdf/zipball/64dea18709fda0d5648545763acda3de7e43c10d",
+                "reference": "64dea18709fda0d5648545763acda3de7e43c10d",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Vatttan\\Apdf\\ApdfServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Vatttan\\Apdf\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Akbar Dizaji",
+                    "email": "vatantech724@gmail.com"
+                }
+            ],
+            "description": "Make export as a pdf in Laravel with supporting for utf charcters like farsi letters",
+            "support": {
+                "issues": "https://github.com/vatttanweb/APdf/issues",
+                "source": "https://github.com/vatttanweb/APdf/tree/main"
+            },
+            "time": "2021-05-26T10:45:06+00:00"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v5.4.1",
             "source": {
@@ -8195,7 +8240,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "vatttan/apdf": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Barryvdh\DomPDF\Facade\Pdf;
+use Vatttan\Apdf\Apdf;
 use Illuminate\Http\Request;
 use DB;
 use Session;
@@ -27,8 +28,12 @@ class PdfController extends Controller
         //tam thoi bo $data -> $data2 đã đủ dữ liệu để xuất lên view rồi, thằng customer dùng session đủ xài
 //        session::put('data',$data);
         session::put('data2',$data2);
+        Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif']);
         $pdf = PDF::loadView('user.bought_list',  compact('data2'));
         return $pdf->download('donhang.pdf');
     }
-
 }
+
+//sua  file pdf -> tieng viet
+//xuat hop dong ki ket 2 ben -> admin xu ly
+//panigations
