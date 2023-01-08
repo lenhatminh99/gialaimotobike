@@ -39,8 +39,8 @@
                     {{ session('message') }}
                 </div>
             @endif
-            <form action="{{ URL::to('admin-dashboard') }}" method="post">
-                {{ csrf_field() }}
+            <form action="{{ URL::to('/admin-dashboard') }}" method="post">
+                @csrf
                 <input type="text" class="ggg" name="admin_email" placeholder="E-MAIL" required="">
                 <input type="password" class="ggg" name="admin_password" placeholder="PASSWORD" required="">
                 <span><input type="checkbox" />Nhớ mật khẩu</span>

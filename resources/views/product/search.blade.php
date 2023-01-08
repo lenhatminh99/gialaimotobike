@@ -24,18 +24,6 @@
                             <li>KẾT QUẢ TÌM KIẾM</li>
                         </ol>
                     </div>
-                    <!-- /.div -->
-                    <div class="row">
-                            <form action="{{ URL::to('/tim-kiem') }}" method="post">
-                                @csrf
-                                <div class="search_box pull-right">
-                                    <input name="keywords_submit" type="text"
-                                           placeholder="Tìm kiếm sản phẩm" />
-                                    <input type="submit" name="search_items"
-                                           class="btn btn-primary btn-sm" value="Tìm kiếm">
-                                </div>
-                            </form>
-                    </div>
                     <!-- /.row -->
                     <div class="row">
                         @foreach($search_product as $key => $product)

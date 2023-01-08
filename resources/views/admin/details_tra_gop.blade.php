@@ -39,8 +39,8 @@
                             <td>{{ number_format($details->product_price + $details->product_price*0.1) }}đ</td>
                             <td>{{ $details->product_sales_quantity }}</td>
                             <td>{{ $details->monthly_pay }} tháng</td>
-                            <td>{{ $details->deadline_pay }}</td>
-                            <td>{{ session::get('last_month') }}</td>
+                            <td>{{ $details->contract_first_period }}</td>
+                            <td>{{ $details->contract_last_period }}</td>
                         </tr>
                     @endforeach
                     </tbody>

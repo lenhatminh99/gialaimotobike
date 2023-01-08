@@ -18,10 +18,12 @@ class CreateTblTragop extends Migration
             $table->integer('order_id');
             $table->integer('customer_id');
             $table->integer('shipping_id');
+            $table->integer('payment_id');
             $table->string('order_total');
             $table->integer('monthly_pay');
             $table->string('order_status');
-            $table->string('deadline_pay');
+            $table->string('contract_first_period');
+            $table->string('contract_last_period');
             $table->timestamps();
         });
     }

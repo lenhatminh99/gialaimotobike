@@ -767,4 +767,44 @@ body {
     }
 }
 
+/*** DROP DOWN ON USERNAME CLICK ***/
+
+.top-nav ul.top-menu>li .dropdown-menu.logout {
+    width:100px !important;
+}
+.top-nav li.dropdown .dropdown-menu {
+    float:right;
+    right: -45px;
+    left:auto;
+}
+.dropdown-menu.extended.logout>li {
+    float:left;
+    width:100%;
+}
+.dropdown-menu.extended.logout>li>a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+    border-bottom:none !important;
+}
+.dropdown-menu.extended.logout>li>a i {
+    font-size:15px;
+}
+.dropdown-menu.extended.logout>li>a>i {
+    padding-right:10px;
+}
+
+
+
+
+
+
+
+
+
 

@@ -33,6 +33,7 @@ class CartController extends Controller
         $payment_data['payment_status'] = 'Đang chờ xử lý';
 
         $payment_id = DB::table('tbl_payment')->insertGetId($payment_data);
+        Session::put('payment_id', $payment_id);
 
         $order_data = array();
         $order_data['customer_id'] = Session::get('customer_id');
@@ -165,6 +166,7 @@ class CartController extends Controller
             return Redirect::to('/checkout')->withErrors($validated);
         }else{
             $shipping_id=DB::table('tbl_shipping')->insertGetId($data);
+            Session::put('shipping_info',$data);
             Session::put('shipping_id',$shipping_id);
             return Redirect::to('/payment');
         }
@@ -175,22 +177,26 @@ class CartController extends Controller
         return view('cart.payment')->with('category', $cate_products);
     }
     public function save_payment_Customer(Request $request){
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
         //gọi lại hàm đầu tiên
         $this->insertOrderDonHang($request);
         if($request->payment_options==1){
             // echo 'Chức năng thanh toán bằng thẻ ghi nợ đang hoàn thiện';
             //thanh toan visa / mastercard
+            app('App\Http\Controllers\AdminController')->send_Mail();
             Session::forget('cart');
             Session::forget('shipping_id');
             return view('cart.handcash');
         }elseif($request->payment_options==2){
             //thanh toan tien mat
+            app('App\Http\Controllers\AdminController')->send_Mail();
             Session::forget('cart');
             Session::forget('shipping_id');
             return view('cart.handcash');
         }elseif($request->payment_options==3){
             // echo ' Chức năng thanh toán bằng momo đang hoàn thiện';
             //thanh toan momo
+            app('App\Http\Controllers\AdminController')->send_Mail();
             Session::forget('cart');
             Session::forget('shipping_id');
             return view('cart.handcash');
@@ -206,19 +212,24 @@ class CartController extends Controller
         //khúc này nếu gọi hàm insertOrderDonHang() sẽ bị thêm dữ liệu vô database 2 lần, để ý khi chạy dd(),
         //nó chạy qua hàm save_payment_Customer() để mình chọn 1 trong 4 phương thức thanh toán trước
         //là nó đã thêm dữ liệu vô 1 lần rồi, nên gọi lại hàm insertOrderDonHang() trong đây sẽ gọi lại lần 2
+
         $tragop_data= array();
         $tragop_data['order_id'] = Session::get('order_id');
         $tragop_data['customer_id'] = Session::get('customer_id');
         $tragop_data['shipping_id'] = Session::get('shipping_id');
+        $tragop_data['payment_id'] = Session::get('payment_id');
         $tragop_data['order_total'] = Session::get('total_after_tax');
         $tragop_data['monthly_pay'] = $request->monthly_pay;
         $tragop_data['order_status'] = 'Đang chờ xử lý';
-        $tragop_data['deadline_pay'] = date('d-m-Y');
+        $tragop_data['contract_first_period'] = date('d-m-Y');
 
-        $first_month = strtotime($tragop_data['deadline_pay']);
-        $last_month = date('d-m-Y', strtotime("+ $request->monthly_pay month", $first_month));
-        Session::put('last_month', $last_month);
+        $first_period = strtotime($tragop_data['contract_first_period']);
+        $last_period = date('d-m-Y', strtotime("+ $request->monthly_pay month", $first_period));
+
+        $tragop_data['contract_last_period'] = $last_period;
+
         DB::table('tbl_tragop')->insertGetId($tragop_data);
+        app('App\Http\Controllers\AdminController')->send_Mail();
         Session::forget('cart');
         Session::forget('shipping_id');
         return view('cart.handcash');
@@ -229,7 +240,7 @@ class CartController extends Controller
         ->join('tbl_customers','tbl_customers.customer_id','=','tbl_order.customer_id')
         ->select('tbl_order.*','tbl_customers.customer_name')
         ->orderby('tbl_order.order_id','asc')
-        ->get();
+        ->paginate(8);
         $manager_order = view('admin.manage_order')->with('all_order', $all_order);
         return view('admin_layout')->with('admin.manager_order', $manager_order);
     }
@@ -239,7 +250,7 @@ class CartController extends Controller
             ->join('tbl_customers','tbl_customers.customer_id','=','tbl_tragop.customer_id')
             ->select('tbl_customers.*','tbl_tragop.*')
             ->orderby('tbl_tragop.order_id','asc')
-            ->get();
+            ->paginate(8);
         $manager_order = view('admin.manage_tra_gop')->with('all_order', $all_order);
         return view('admin_layout')->with('admin.manager_tra_gop', $manager_order);
     }
@@ -262,6 +273,33 @@ class CartController extends Controller
             ->get();
         $manager_details_order =  view('admin.details_tra_gop')->with('all_order',$all_order);
         return view('admin_layout')->with('admin.manager_details_order', $manager_details_order);
+    }
+    public function manage_Customer(){
+        $all_customer = DB::table('tbl_customers')
+            ->select('tbl_customers.*')
+            ->paginate(8);
+        $manage_customer = view('admin.manage_customer')->with('all_customer', $all_customer);
+        return view('admin_layout')->with('admin.manage_customer', $manage_customer);
+    }
+    public function order_By_Customer($customer_id){
+        $order_by_customer =  DB::table('tbl_customers')
+            ->join('tbl_order','tbl_order.customer_id','=','tbl_customers.customer_id')
+            ->select('tbl_order.*','tbl_customers.*')
+            ->where('tbl_order.customer_id',$customer_id)
+            ->paginate(8);
+        $manage_customers = view('admin.order_by_customer')
+            ->with('order_by_customer',$order_by_customer);
+        return view('admin_layout')->with('manage_customers',$manage_customers);
+    }
+    public function shipping_By_Customer($shipping_id){
+        $shipping_by_customer = DB::table('tbl_order')
+            ->join('tbl_shipping','tbl_shipping.shipping_id','=','tbl_order.shipping_id')
+            ->select('tbl_shipping.*','tbl_order.*')
+            ->where('tbl_shipping.shipping_id', $shipping_id)
+            ->get();
+        $manage_shipping = view('admin.manage_shipping')
+            ->with('shipping_by_customer',$shipping_by_customer);
+        return view('admin_layout')->with('manage_shipping',$manage_shipping);
     }
     public function accept_Order($order_id){
         DB::table('tbl_order')->where('order_id', $order_id)->update(['order_status' => 'Đã duyệt đơn hàng']);

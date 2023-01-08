@@ -51,7 +51,7 @@
                                         <p class="product-name">{{ $product->product_name }}</p>
                                         <h3>
                                             <strong>
-                                                <i class="fas fa-dollar-sign"></i>{{number_format($product->product_price) }}
+                                          {{number_format($product->product_price) }}đ
                                             </strong>
                                         </h3>
                                     </a>

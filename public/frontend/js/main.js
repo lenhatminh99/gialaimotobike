@@ -57,22 +57,22 @@ $(document).ready(function() {
 
 //comment in product
 $(document).ready(function(){
-    load_Comment();
-    function load_Comment(){
-        var product_id = $('.comment_product_id').val();
-        var _token = $('input[name="_token"]').val();
-        $.ajax({
-            url: '/load-comment',
-            method: 'POST',
-            data: {
-                product_id: product_id,
-                _token: _token
-            },
-            success:function(data){
-                $('#comment_show').html(data);
-            }
-        });
-    }
+    // load_Comment();
+    // function load_Comment(){
+    //     var product_id = $('.comment_product_id').val();
+    //     var _token = $('input[name="_token"]').val();
+    //     $.ajax({
+    //         url: '/load-comment',
+    //         method: 'POST',
+    //         data: {
+    //             product_id: product_id,
+    //             _token: _token
+    //         },
+    //         success:function(data){
+    //             $('#comment_show').html(data);
+    //         }
+    //     });
+    // }
     $('#send-comment').click(function(){
         var product_id = $('.comment_product_id').val();
         var comment_name  = $('.comment_name').val();
@@ -88,7 +88,7 @@ $(document).ready(function(){
                 _token:_token
             },
             success: function() {
-                load_Comment();
+                // load_Comment();
             }
         });
     })

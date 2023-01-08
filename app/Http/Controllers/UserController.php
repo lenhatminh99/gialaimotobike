@@ -81,9 +81,11 @@ class UserController extends Controller
         if(!session::get('customer_id')){
             $contact['email_contact'] = $request->email_contact;
             $contact['username_contact'] = $request->username_contact;
+            $contact['customer_id'] = 0;
         }else{
             $contact['email_contact'] = session::get('customer_email');
             $contact['username_contact'] = session::get('customer_name');
+            $contact['customer_id'] = session::get('customer_id');
         }
         $contact['address_contact'] = $request->address_contact;
         $contact['content_contact'] = $request->content_contact;

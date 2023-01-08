@@ -9,7 +9,7 @@ class Comment extends Model
 {
     public $timestamps = false;
     protected $fillable = [
-        'comment' , 'comment_name' , 'comment_date','comment_product_id'
+        'comment_id' , 'product_id' , 'comment' , 'comment_name' , 'comment_date',
     ];
 
     protected $primaryKey = 'comment_id';

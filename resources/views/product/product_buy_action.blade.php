@@ -24,28 +24,6 @@
                             <li>SẢN PHẨM THEO DANH MỤC</li>
                         </ol>
                     </div>
-                    <!-- /.div -->
-                    <div class="row">
-                        <div class="btn-group alg-right-pad">
-                            <div class="btn-group">
-                                <div class="social-icons pull-right">
-                                    <ul class="nav navbar-nav">
-                                        <div class="">
-                                            <form action="{{ URL::to('/tim-kiem') }}" method="post">
-                                                @csrf
-                                                <div class="search_box pull-right">
-                                                    <input name="keywords_submit" type="text"
-                                                           placeholder="Tìm kiếm sản phẩm" />
-                                                    <input style="margin-top: 0;color:black;"type="submit" name="search_items"
-                                                           class="btn btn-primary btn-sm" value="Tìm kiếm">
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <!-- /.row -->
                     <div class="row">
                         @foreach($danhsachsanpham as $key => $product)
@@ -73,7 +51,7 @@
                                         <p class="product-name">{{ $product->product_name }}</p>
                                         <h3>
                                             <strong>
-                                                <i class="fas fa-dollar-sign"></i>{{number_format($product->product_price) }}
+                                                {{number_format($product->product_price) }}đ
                                             </strong>
                                         </h3>
                                     </a>
@@ -86,6 +64,7 @@
                             </div>
                         @endforeach
                     </div>
+                    {{ $danhsachsanpham -> links() }}
                 </div>
             </div>
         </div>

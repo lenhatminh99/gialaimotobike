@@ -18,12 +18,12 @@
                              <div class="form-group">
                                  <label for="exampleInputEmail1">Tên danh mục</label>
                                  <input type="text" name="category_products_name" class="form-control"
-                                     id="exampleInputEmail1" placeholder="Tên danh mục">
+                                     id="exampleInputEmail1" placeholder="Tên danh mục" required>
                              </div>
                              <div class="form-group">
                                  <label for="exampleInputPassword1">Mô tả danh mục</label>
                                  <textarea style="resize : none" rows="5" type="text" name="category_products_desc" class="form-control"
-                                     id="exampleInputPassword1" placeholder="Mô tả danh mục"></textarea>
+                                     id="exampleInputPassword1" placeholder="Mô tả danh mục" required></textarea>
                              </div>
                              <div class="form-group">
                                  <select name="category_products_status" class="form-control input-sm m-bot15">

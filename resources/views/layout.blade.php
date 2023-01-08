@@ -32,7 +32,6 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="fa fa-bars"></span> Menu
                 </button>
-
                 <div class="collapse navbar-collapse" id="ftco-nav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active"><a href="/" class="nav-link">Trang chủ</a></li>
@@ -59,6 +58,19 @@
                         @else
                             <li class="nav-item"><a href="{{URL::to('/login')}}" class="nav-link">Đăng nhập</a></li>
                         @endif
+                        <div style="margin: auto;">
+                            <ul>
+                                <form action="{{ URL::to('/tim-kiem') }}" method="post">
+                                    @csrf
+                                    <div class="search_box">
+                                        <input name="keywords_submit" type="text"
+                                               placeholder="Tìm kiếm sản phẩm" />
+                                        <input style="background: rgb(245, 209, 113);"type="submit" name="search_items"
+                                               class="btn-sm" value="Tìm kiếm">
+                                    </div>
+                                </form>
+                            </ul>
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -76,7 +88,7 @@
                     </div>
                     <div class="content-banner">
                         <div class="title">
-                            <h2>Xe máy <span>gia lai</span> - ve chai đồng nát</h2>
+                            <h2>Xe máy <span>gia lai</span> - Phục vụ cho tất cả mọi người</h2>
                         </div>
                         <div class="subtitle">
                             <p>Công ty TNHH Gia Lai Motobike chuyên mua bán,
@@ -94,7 +106,7 @@
                     </div>
                     <div class="content-banner">
                         <div class="title">
-                            <h2>Xe máy <span>gia lai</span> - ve chai đồng nát</h2>
+                            <h2>Xe máy <span>gia lai</span> - Phục vụ cho tất cả mọi người</h2>
                         </div>
                         <div class="subtitle">
                             <p>Công ty TNHH Gia Lai Motobike chuyên mua bán,
@@ -112,7 +124,6 @@
 
 {{--page body--}}
 <div class="pageBody">
-
     @yield('content')
 {{--    product: show cung website--}}
 {{--    product_buy_action: khi click vao mua ngay thi show ra, hien thi sp kem danh muc--}}
@@ -246,7 +257,7 @@
             <!-- Section: Text -->
             <section class="mb-4">
                 <p>
-                    Xe máy Gia Lai - Ve chai đồng nát <br />Chuyên phân phối xe máy các loại đâm đụng, té ngã, xe tai nạn,...
+                    Xe máy Gia Lai  <br />Chuyên phân phối xe máy các loại, xe phân khối lớn, xe nhập khẩu...
                 </p>
             </section>
             <!-- Section: Text -->

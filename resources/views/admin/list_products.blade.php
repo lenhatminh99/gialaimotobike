@@ -35,7 +35,7 @@
                                  </td>
                                  <td>{{ $pro->product_id }}</td>
                                  <td>{{ $pro->product_name }}</td>
-                                 <td>{{ $pro->product_price }}</td>
+                                 <td>{{ number_format($pro->product_price) }}đ</td>
                                  <td><img src="public/upload/product/{{ $pro->product_image }}" height="100px"
                                          width="150px" /></td>
                                  <td>{{ $pro->category_name }}</td>
@@ -65,9 +65,9 @@
                      </tbody>
                  </table>
              </div>
-             <footer class="panel-footer">
-
-             </footer>
+         </div>
+         <div style="display: flex; justify-content: center;">
+            {{ $list_products->links() }}
          </div>
      </div>
  @endsection

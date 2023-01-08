@@ -36,17 +36,25 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-            'port' => env('MAIL_PORT', 587),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'host' => 'smtp.gmail.com',
+            'port' => 587,
+            'encryption' => 'tls',
+            'username' => 'minhln.it@gmail.com',
+            'password' => 'jjzqzfvktcwzrlbd',
             'timeout' => null,
             'auth_mode' => null,
         ],
 
         'ses' => [
             'transport' => 'ses',
+        ],
+
+        'stream' => [
+            'ssl' => [
+                'allow_self_signed' => true,
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+            ],
         ],
 
         'mailgun' => [
@@ -92,8 +100,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => 'minhln.it@gmail.com',
+        'name' => 'Gia Lai Motobike',
     ],
 
     /*

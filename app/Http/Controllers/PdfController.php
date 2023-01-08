@@ -33,7 +33,3 @@ class PdfController extends Controller
         return $pdf->download('donhang.pdf');
     }
 }
-
-//sua  file pdf -> tieng viet
-//xuat hop dong ki ket 2 ben -> admin xu ly
-//panigations

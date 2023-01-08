@@ -27,7 +27,7 @@
 <section class="h-100 gradient-custom">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
-            <h1>Tiếng việt viết được</h1>
+            <h1>Don hang</h1>
             <div class="col-lg-10 col-xl-8">
                 <div class="card" style="border-radius: 10px;">
                     <div class="card-header px-4 py-5">

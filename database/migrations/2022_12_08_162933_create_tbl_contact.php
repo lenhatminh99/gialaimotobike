@@ -15,6 +15,7 @@ class CreateTblContact extends Migration
     {
         Schema::create('tbl_contact', function (Blueprint $table) {
             $table->increments('message_id');
+            $table->int('customer_id');
             $table->string('email_contact');
             $table->string('username_contact');
             $table->string('address_contact');

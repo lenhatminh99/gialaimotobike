@@ -71,7 +71,9 @@ Route::get('/dashboard', [AdminController::class, 'show_dashboard']);
 Route::get('/logout', [AdminController::class, 'logout']);
 Route::post('/admin-dashboard', [AdminController::class, 'login']);
 
+Route::get('/customer-message', [AdminController::class, 'show_Customer_Message']);
 
+Route::get('/mail', [AdminController::class, 'send_Mail']);
 
 //----------------------------------------------Admin - Category products routes------------------------------------------------//
 Route::get('/add-category-products', [CategoryController::class, 'add_Category_Products']);
@@ -88,7 +90,7 @@ Route::post('/update-category-products/{category_products_id}', [CategoryControl
 
 
 
-//----------------------------------------------Admin - Products routes-----------------------------------------------------------//
+//----------------------------------------------Admin - Product routes-----------------------------------------------------------//
 Route::get('/add-products',[ProductsController::class,'add_Products']);
 Route::get('/list-products',[ProductsController::class,'list_Products']);
 Route::get('/edit-products/{products_id}', [ProductsController::class, 'edit_Products']);
@@ -107,9 +109,10 @@ Route::get('/manage-order', [CartController::class, 'manage_Order']);
 Route::get('/manage-tra-gop', [CartController::class, 'manage_Tra_Gop']);
 Route::get('/details-order/{order_id}', [CartController::class, 'details_Order']);
 Route::get('/details-tra-gop/{order_id}', [CartController::class, 'details_Tra_Gop']);
+Route::get('/customer-manage', [CartController::class, 'manage_Customer']);
+Route::get('/order-by-customer/{customer_id}', [CartController::class, 'order_By_Customer']);
+Route::get('/dia-chi-nguoi-nhan/{shipping_id}', [CartController::class, 'shipping_By_Customer']);
 Route::get('/accept-order/{order_id}', [CartController::class, 'accept_Order']);
 Route::get('/deny-order/{order_id}', [CartController::class, 'deny_Order']);
 
 
-Route::get('/customer-message', [AdminController::class, 'show_Customer_Message']);
-Route::post('/save-customer-message', [AdminController::class, 'save_Customer_Message']);

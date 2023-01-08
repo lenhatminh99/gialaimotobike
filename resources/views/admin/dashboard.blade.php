@@ -22,7 +22,6 @@
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 </div>
                 <div class="col-md-8 market-update-left">
-
                     <h4>Tổng đơn hàng</h4>
                     <h3>{{session::get('all_order')}}</h3>
                     <p>đã được đặt</p>
@@ -36,7 +35,6 @@
                     <i class="fa fa-usd"></i>
                 </div>
                 <div class="col-md-8 market-update-left">
-
                     <h4>Tổng thu nhập</h4>
                     <h3 style="font-size: 25px; padding-bottom:8px;">{{session::get('order_total')}}</h3>
                     <p>trên hệ thống</p>

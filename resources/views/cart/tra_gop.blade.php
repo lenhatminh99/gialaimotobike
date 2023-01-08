@@ -24,10 +24,6 @@
                 @endforeach
             <form action="{{URL::to('/done-order')}}" method="post">
                 @csrf
-{{--                <input type="hidden" name="payment_options" value="4">--}}
-{{--                lúc trước gọi lại hàm insertOrderDonHang trong done_Order là sai -> vì nó gọi lại lần 2 mà--}}
-{{--                form tra_gop ko có cái payment_options nên nó báo null, vì vậy mình phải truyền cái input bên trên để nó biết đc cái payment_options--}}
-{{--                nhưng giờ sửa lại rồi, nó chỉ chạy qua lần đầu và lấy được payment_options oke.--}}
                 <div class="total_area">
                     <table class="table table-dark">
                         <thead>

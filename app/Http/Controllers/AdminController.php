@@ -7,7 +7,14 @@ use DB;
 use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
-session_start();
+use Mail;
+
+if (!isset($_SESSION)) {
+    session_start();
+} else {
+    session_destroy();
+    session_start();
+}
 
 class AdminController extends Controller
 {
@@ -48,7 +55,7 @@ class AdminController extends Controller
     public function show_dashboard(){
         $this->Authlogin();
         $clients = sizeof(DB::table('tbl_customers')->select('customer_id')->get());
-        session::put('clients',$clients);
+        session::put('clients',$clients-1);
         $all_order = sizeof(DB::table('tbl_order')->select('order_id')->get());
         session::put('all_order',$all_order);
         $order_total = number_format(DB::table('tbl_order')->sum('tbl_order.order_total'));
@@ -79,5 +86,11 @@ class AdminController extends Controller
     public function show_Customer_Message(){
         $customer_message = DB::table('tbl_contact')->get();
         return view('admin.customer_message')->with('customer_message',$customer_message);
+    }
+    public function send_Mail(){
+        Mail::send('email.send_mail', ['name'=>session::get('shipping_info.shipping_name')], function($email){
+            $email->subject('Xác nhận đơn hàng');
+            $email->to(session::get('shipping_info.shipping_email'), session::get('shipping_info.shipping_name'));
+        });
     }
 }

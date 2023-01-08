@@ -111,7 +111,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </li>
                         <li class="sub-menu">
                             <a href="javascript:;">
-                                <i class="fa fa-book"></i>
+                                <i class="fa fa-bicycle"></i>
                                 <span>Sản phẩm</span>
                             </a>
                             <ul class="sub">
@@ -130,12 +130,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <li><a href="{{ URL::to('/manage-tra-gop') }}">Đơn hàng trả góp</a></li>
                         </li>
                     </ul>
-                    <li>
-                        <a class="sub-menu" href="{{ URL::to('/customer-message') }}">
-                            <i class="fa fa-book"></i>
-                            <span>Góp ý khách hàng</span>
-                        </a>
-                    </li>
+                        <li>
+                            <a class="sub-menu" href="{{ URL::to('/customer-manage') }}">
+                                <i class="fa fa-user"></i>
+                                <span>Quản lý khách hàng</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="sub-menu" href="{{ URL::to('/customer-message') }}">
+                                <i class="fa fa-mail-reply"></i>
+                                <span>Góp ý khách hàng</span>
+                            </a>
+                        </li>
                     </ul>
                     </li>
                     </ul>

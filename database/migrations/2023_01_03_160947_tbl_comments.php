@@ -15,11 +15,10 @@ class TblComments extends Migration
     {
         Schema::create('tbl_comments', function (Blueprint $table) {
             $table->Increments('comment_id');
+            $table->integer('product_id');
             $table->string('comment');
             $table->string('comment_name');
             $table->string('comment_date');
-            $table->integer('comment_product_id');
-            $table->timestamps();
         });
     }
 

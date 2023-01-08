@@ -44,9 +44,9 @@
                     </tbody>
                 </table>
             </div>
-            <footer class="panel-footer">
-
-            </footer>
+        </div>
+        <div style="display: flex; justify-content: center;">
+            {{ $all_order->links() }}
         </div>
     </div>
 @endsection

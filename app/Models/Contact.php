@@ -9,7 +9,7 @@ class Contact extends Model
 {
     public $timestamps = false;
     protected $fillable = [
-         'message_id' , 'email_contact', 'username_contact', 'address_contact', 'content_contact'
+         'message_id' , 'customer_id' , 'email_contact', 'username_contact', 'address_contact', 'content_contact'
 ];
 
     protected $primaryKey = 'message_id';

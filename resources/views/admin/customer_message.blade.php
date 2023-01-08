@@ -11,12 +11,12 @@
                      <tbody>
                          <tr class="unread">
                              <th>Email</th>
-                             <th>Tên tài khoản</th>
+                             <th>Tên khách hàng</th>
                              <th>Địa chỉ</th>
                              <th>Nội dung</th>
                          </tr>
                          @foreach ($customer_message as $key => $message)
-                             <tr class="unread">
+                             <tr class="breadcrumb">
                                  <td class="view-message"><a href="#">{{ $message->email_contact }}</a></td>
                                  <td class="view-message"><a href="#">{{ $message->username_contact }}</a></td>
                                  <td class="view-message"><a href="#">{{ $message->address_contact }}</a></td>
