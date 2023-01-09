@@ -1,82 +1,442 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Gia Lai Motobike</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{--    font awesome--}}
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('/public/frontend/css/font-awesome.min.css')}}">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&display=swap" rel="stylesheet">
-    {{--    my css--}}
-    <link rel="stylesheet" href="{{asset('/public/frontend/css/main.css')}}">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
+        body {
+            background: #eee;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
 
-        .gradient-custom {
-            /* Chrome 10-25, Safari 5.1-6 */
-            background: -webkit-linear-gradient(to bottom, #0052D4, rgba(29, 113, 238, 0.85));
+        .clearfix {
+            content: "";
+            display: table;
+            clear: both;
+        }
 
-            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            background: linear-gradient(to bottom, #0052D4, rgba(29, 113, 238, 0.85));
+        #site-header, #site-footer {
+            background: #fff;
+        }
 
-            padding:15px;
-            border-radius: 5px;
+        #site-header {
+            margin: 0 0 30px 0;
+        }
+
+        #site-header h1 {
+            font-size: 31px;
+            font-weight: 300;
+            padding: 40px 0;
+            position: relative;
+            margin: 0;
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+
+            -webkit-transition: color .2s linear;
+            -moz-transition: color .2s linear;
+            -ms-transition: color .2s linear;
+            -o-transition: color .2s linear;
+            transition: color .2s linear;
+        }
+
+        a:hover {
+            color: #53b5aa;
+        }
+
+        #site-header h1 span {
+            color: #53b5aa;
+        }
+
+        #site-header h1 span.last-span {
+            background: #fff;
+            padding-right: 150px;
+            position: absolute;
+            left: 217px;
+
+            -webkit-transition: all .2s linear;
+            -moz-transition: all .2s linear;
+            -ms-transition: all .2s linear;
+            -o-transition: all .2s linear;
+            transition: all .2s linear;
+        }
+
+        #site-header h1:hover span.last-span, #site-header h1 span.is-open {
+            left: 363px;
+        }
+
+        #site-header h1 em {
+            font-size: 16px;
+            font-style: normal;
+            vertical-align: middle;
+        }
+
+        .container {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0 auto;
+            width: 980px;
+        }
+
+        #cart {
+            width: 100%;
+        }
+
+        #cart h1 {
+            font-weight: 300;
+        }
+
+        #cart a {
+            color: #53b5aa;
+            text-decoration: none;
+
+            -webkit-transition: color .2s linear;
+            -moz-transition: color .2s linear;
+            -ms-transition: color .2s linear;
+            -o-transition: color .2s linear;
+            transition: color .2s linear;
+        }
+
+        #cart a:hover {
+            color: #000;
+        }
+
+        .product.removed {
+            margin-left: 980px !important;
+            opacity: 0;
+        }
+
+        .product {
+            border: 1px solid #eee;
+            margin: 20px 0;
+            width: 100%;
+            height: 195px;
+            position: relative;
+
+            -webkit-transition: margin .2s linear, opacity .2s linear;
+            -moz-transition: margin .2s linear, opacity .2s linear;
+            -ms-transition: margin .2s linear, opacity .2s linear;
+            -o-transition: margin .2s linear, opacity .2s linear;
+            transition: margin .2s linear, opacity .2s linear;
+        }
+
+        .product img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .product header, .product .content {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-style: none none solid none;
+            float: left;
+        }
+
+        .product header {
+            background: #000;
+            margin: 0 1% 20px 0;
+            overflow: hidden;
+            padding: 0;
+            position: relative;
+            width: 24%;
+            height: 195px;
+        }
+
+        .product header:hover img {
+            opacity: .7;
+        }
+
+        .product header:hover h3 {
+            bottom: 73px;
+        }
+
+        .product header h3 {
+            background: #53b5aa;
             color: #fff;
+            font-size: 22px;
+            font-weight: 300;
+            line-height: 49px;
+            margin: 0;
+            padding: 0 30px;
+            position: absolute;
+            bottom: -50px;
+            right: 0;
+            left: 0;
+
+            -webkit-transition: bottom .2s linear;
+            -moz-transition: bottom .2s linear;
+            -ms-transition: bottom .2s linear;
+            -o-transition: bottom .2s linear;
+            transition: bottom .2s linear;
+        }
+
+        .remove {
+            cursor: pointer;
+        }
+
+        .product .content {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            height: 140px;
+            padding: 0 20px;
+            width: 75%;
+        }
+
+        .product h1 {
+            color: #53b5aa;
+            font-size: 25px;
+            font-weight: 300;
+            margin: 17px 0 20px 0;
+        }
+
+        .product footer.content {
+            height: 50px;
+            margin: 6px 0 0 0;
+            padding: 0;
+        }
+
+        .product footer .price {
+            background: #fcfcfc;
+            color: #000;
+            float: right;
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 49px;
+            margin: 0;
+            padding: 0 30px;
+        }
+
+        .product footer .full-price {
+            background: #53b5aa;
+            color: #fff;
+            float: right;
+            font-size: 22px;
+            font-weight: 300;
+            line-height: 49px;
+            margin: 0;
+            padding: 0 30px;
+
+            -webkit-transition: margin .15s linear;
+            -moz-transition: margin .15s linear;
+            -ms-transition: margin .15s linear;
+            -o-transition: margin .15s linear;
+            transition: margin .15s linear;
+        }
+
+        .qt, .qt-plus, .qt-minus {
+            display: block;
+            float: left;
+        }
+
+        .qt {
+            font-size: 19px;
+            line-height: 50px;
+            width: 70px;
+            text-align: center;
+        }
+
+        .qt-plus, .qt-minus {
+            background: #fcfcfc;
+            border: none;
+            font-size: 30px;
+            font-weight: 300;
+            height: 100%;
+            padding: 0 20px;
+            -webkit-transition: background .2s linear;
+            -moz-transition: background .2s linear;
+            -ms-transition: background .2s linear;
+            -o-transition: background .2s linear;
+            transition: background .2s linear;
+        }
+
+        .qt-plus:hover, .qt-minus:hover {
+            background: #53b5aa;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .qt-plus {
+            line-height: 50px;
+        }
+
+        .qt-minus {
+            line-height: 47px;
+        }
+
+        #site-footer {
+            margin: 30px 0 0 0;
+        }
+
+        #site-footer {
+            padding: 40px;
+        }
+
+        #site-footer h1 {
+            background: #fcfcfc;
+            border: 1px solid #ccc;
+            border-style: none none solid none;
+            font-size: 24px;
+            font-weight: 300;
+            margin: 0 0 7px 0;
+            padding: 14px 40px;
+            text-align: center;
+        }
+
+        #site-footer h2 {
+            font-size: 24px;
+            font-weight: 300;
+            margin: 10px 0 0 0;
+        }
+
+        #site-footer h3 {
+            font-size: 19px;
+            font-weight: 300;
+            margin: 15px 0;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+
+        .btn {
+            background: #53b5aa;
+            border: 1px solid #999;
+            border-style: none none solid none;
+            cursor: pointer;
+            display: block;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 300;
+            padding: 16px 0;
+            width: 290px;
+            text-align: center;
+
+            -webkit-transition: all .2s linear;
+            -moz-transition: all .2s linear;
+            -ms-transition: all .2s linear;
+            -o-transition: all .2s linear;
+            transition: all .2s linear;
+        }
+
+        .btn:hover {
+            color: #fff;
+            background: #429188;
+        }
+
+        .type {
+            background: #fcfcfc;
+            font-size: 13px;
+            padding: 10px 16px;
+            left: 100%;
+        }
+
+        .type, .color {
+            border: 1px solid #ccc;
+            border-style: none none solid none;
+            position: absolute;
+        }
+
+        .color {
+            width: 40px;
+            height: 40px;
+            right: -40px;
+        }
+
+        .red {
+            background: #cb5a5e;
+        }
+
+        .yellow {
+            background: #f1c40f;
+        }
+
+        .blue {
+            background: #3598dc;
+        }
+
+        .minused {
+            margin: 0 50px 0 0 !important;
+        }
+
+        .added {
+            margin: 0 -50px 0 0 !important;
         }
     </style>
+    <title>Document</title>
 </head>
 <body>
-<section class="h-100 gradient-custom">
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <h1>ĐƠN ĐẶT HÀNG XE MÁY TRÊN GIA LAI MOTOBIKE NGÀY {{date("d/m/Y")}}</h1>
-            <div class="col-lg-10 col-xl-8">
-                <div class="card" style="border-radius: 10px;">
-                    <div class="card-header px-4 py-5">
-                        <h3 class="text-muted mb-0">Cảm ơn vì đã mua hàng trên Gia Lai Motobike, Mr/Mrs. <span style="color: #ad1111;">{{strtoupper(session::get('shipping_info.shipping_name'))}}</span></h3>
-                    </div>
-                    <div class="card-body p-4">
-                        <div class="card shadow-0 border mb-4">
-                            <div class="card-body">
-                                <div class="row">
-                                    <table class="table table-dark" style="width: 100%; margin-left: auto; margin-right: auto">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">Mã sản phẩm</th>
-                                            <th scope="col">Tên sản phẩm</th>
-                                            <th scope="col">Số lượng</th>
-                                            <th scope="col">Giá tiền</th>
-                                            <th scope="col">Thuế( 10%)</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach(session::get('cart') as $key => $value)
-                                            <tr style="text-align: center;">
-                                                <td>{{$value['product_id']}}</td>
-                                                <td>{{strtoupper($value['product_name'])}}</td>
-                                                <td>{{$value['product_qty']}}</td>
-                                                <td>{{number_format($value['product_price'])}}đ</td>
-                                                <td>{{number_format($value['product_price']*0.1)}}đ</td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <p>Nếu bạn có thắc mắc, vui lòng gửi mail theo địa chỉ: admin@gialaimotobike.com</p>
+<header id="site-header">
+    <div class="container">
+        <h1>Đơn hàng của bạn</h1>
+        <h3 class="text-muted mb-0">Cảm ơn vì đã mua hàng trên Gia Lai Motobike, Mr/Mrs. <span style="color: #ad1111;">{{strtoupper(session::get('shipping_info.shipping_name'))}}</span></h3>
+    </div>
+    </div>
+</header>
+
+<div class="container">
+    @foreach(session::get('cart') as $key => $value)
+        <section id="cart">
+            <article class="product">
+                <header>
+                    <a class="remove">
+                        <img src="https://previews.123rf.com/images/logomimi/logomimi1911/logomimi191100374/136622524-scooter-bike-logo-template-motorcycle-icon-design-motorbike-symbol-vector.jpg" alt="">
+                    </a>
+                </header>
+                <div class="content">
+
+                    <h1>{{strtoupper($value['product_name'])}}</h1>
+
+                    <div><p>Mã sản phẩm: {{$value['product_id']}}</p></div>
                 </div>
-            </div>
+
+                <footer class="content">
+                    <span>Số lượng: {{$value['product_qty']}}</span>
+                    <h2 class="full-price">
+                        {{number_format($value['product_price']*$value['product_qty'])}}đ
+                    </h2>
+
+                    <h2 class="price">
+                        Đơn giá: {{number_format($value['product_price'])}}đ
+                    </h2>
+                </footer>
+            </article>
+        </section>
+    @endforeach
+</div>
+
+<footer id="site-footer">
+    <div class="container clearfix">
+
+        <?php
+        $tax = 0;
+        $total = 0;
+        $total_after_tax = 0;
+        foreach (Session::get('cart') as $key => $cart){
+            $subtotal = $cart['product_price'] * $cart['product_qty'];
+            $total += $subtotal;
+            $tax = $total * 0.1;
+            $total_after_tax = $total + $tax;
+        }
+            ?>
+        <div class="left">
+            <h2 class="subtotal">Giá chưa bao gồm thuế: <span>{{number_format($total)}}đ</span></h2>
+            <h3 class="tax">Thuế (10%): <span>{{number_format($tax)}}đ</span></h3>
+            <p>Khiếu nại vui lòng liên hệ hot-line: 0909.47.28.46 hoặc email: admin@gialaimotobike.com</p>
+        </div>
+
+        <div class="right">
+            <h1 class="total">Tổng cộng: <span>{{number_format($total_after_tax)}}</span>đ</h1>
         </div>
     </div>
-</section>
-<script src="https://kit.fontawesome.com/7172a51dfe.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-<script src="/public/frontend/js/jquery.min.js"></script>
-<script src="/public/frontend/js/popper.js"></script>
-<script src="/public/frontend/js/bootstrap.min.js"></script>
-<script src="/public/frontend/js/sweetalert.js"></script>
-<script src="/public/frontend/js/main.js"></script>
+</footer>
 </body>
 </html>

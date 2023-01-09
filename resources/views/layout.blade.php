@@ -51,6 +51,7 @@
                                 </a>
                                 <ul class="dropdown-menu extended logout">
                                     <li><a href="{{URL::to('/lich-su-mua-hang/'. Session::get('customer_id'))}}"><i class=" fa fa-suitcase"></i>Lịch sử mua hàng</a></li>
+                                    <li><a href="{{URL::to('/xuat-file-don-hang/'. Session::get('customer_id'))}}"><i class=" fa fa-suitcase"></i>Xuất PDF lịch sử mua hàng</a></li>
                                     <li><a href="{{ URL::to('/logout-customer') }}"><i
                                                 class="fa fa-key"></i>Đăng xuất</a></li>
                                 </ul>
@@ -66,7 +67,7 @@
                                         <input name="keywords_submit" type="text"
                                                placeholder="Tìm kiếm sản phẩm" />
                                         <input style="background: rgb(245, 209, 113);"type="submit" name="search_items"
-                                               class="btn-sm" value="Tìm kiếm">
+                                               class="btn-sm" value="Tìm kiếm" />
                                     </div>
                                 </form>
                             </ul>

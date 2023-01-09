@@ -6,9 +6,9 @@
     "roboto": {
         "100": "C:\\wamp64\\www\\gialaimotobike\\storage\\fonts\/roboto_100_d876775dd3daf87873e6dd250e9c4c9e",
         "300": "C:\\wamp64\\www\\gialaimotobike\\storage\\fonts\/roboto_300_21960201651f2ea862182ff34dfd5ead",
-        "normal": "C:\\wamp64\\www\\gialaimotobike\\storage\\fonts\/roboto_normal_9fa47a070a8b30b595086d70bb7ac78c",
+        "normal": "roboto_normal_96e798dde0b3cd3df1bbb291837bd992",
         "bold": "C:\\wamp64\\www\\gialaimotobike\\storage\\fonts\/roboto_bold_3d0ad20d45ace845335f9e6c390a09d9",
-        "500": "roboto_500_d0dcda9e813eb9b854a1cc044831f6fe"
+        "500": "C:\\wamp64\\www\\gialaimotobike\\storage\\fonts\/roboto_500_d0dcda9e813eb9b854a1cc044831f6fe"
     },
     "font awesome 5 brands": {
         "normal": "font_awesome_5_brands_normal_64e570df753d2034ff4dea34374e39c9"
@@ -19,5 +19,17 @@
     },
     "be vietnam pro": {
         "100": "be_vietnam_pro_100_6fed63e024d77a1d993898cb7f629c73"
+    },
+    "open sans": {
+        "normal": "open_sans_normal_bf11512877ef2223afd06e89358ef2fc"
+    },
+    "be vietnam pro', sans-serif": {
+        "normal": "be_vietnam_pro___sans_serif_normal_bf11512877ef2223afd06e89358ef2fc"
+    },
+    "noto sans": {
+        "normal": "noto_sans_normal_554b8e5df7477bea89da66d03a773faf"
+    },
+    "amiri": {
+        "normal": "amiri_normal_de6318c970f995a7d37aa03bd3f2fc5c"
     }
 }

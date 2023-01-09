@@ -62,7 +62,9 @@ Route::post('/save-payment-customer', [CartController::class, 'save_payment_Cust
 //contact
 Route::post('/contact', [UserController::class, 'contact']);
 
-Route::get('/lich-su-mua-hang/{customer_id}', [PdfController::class, 'pdf_DonHang']);
+Route::get('/lich-su-mua-hang/{customer_id}', [PdfController::class, 'ordered_List']);
+Route::get('/chi-tiet-don-hang/{order_id}', [PdfController::class, 'ordered_Details_List']);
+Route::get('/xuat-file-don-hang/{customer_id}', [PdfController::class, 'pdf_DonHang']);
 
 
 //-----------------------------------------------------------------Admin routes-----------------------------------------------------//
