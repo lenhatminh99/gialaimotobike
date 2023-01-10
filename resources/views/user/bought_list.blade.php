@@ -83,7 +83,7 @@
 </section>
 <div class="container">
     <div class="row d-flex justify-content-center align-items-center h-100">
-        <p style="display: block; float: right; clear: left;">Giám Đốc</p>
+        <p style="display: block; float: right; clear: left;">Admin</p>
         <br /><br />
         <img style="display: block; float: right; clear: left;" src="{{asset('public/frontend/images/hand-sign.png')}}" alt="" width="15%">
         <br />
